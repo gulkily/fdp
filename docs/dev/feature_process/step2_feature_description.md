@@ -22,4 +22,4 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Keep the doc lightweight enough to consume at a glance
 
 ## Next
-Deliver the document, request confirmation, and wait for “Approved Step 2.” Once approved, continue with `docs/dev/feature_process/step3_development_plan.md`.
+Deliver the document, request confirmation, and wait for "Approved Step 2." Once approved, continue with `docs/dev/feature_process/step3_development_plan_before.md`.

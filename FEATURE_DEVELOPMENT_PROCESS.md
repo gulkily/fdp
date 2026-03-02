@@ -5,17 +5,17 @@ Feature work flows through four tightly scoped steps with an optional solution a
 
 ## How to Use This Chain
 1. Start with the highest-numbered approved step (usually Step 1 unless explicitly skipped).
-2. Read only the dedicated step file in `docs/dev/feature_process/`, complete that deliverable, and request approval in the format “Approved Step N.”
-3. Do not open the next file until the user replies with the exact approval phrase.
-4. Reprint the instructions from the relevant file before you begin working on that step’s deliverable.
+2. Read only the relevant instruction file in `docs/dev/feature_process/` and reprint it before starting work.
+3. For Steps 3 and 4, use phase files in order: `*_before.md` -> `*_do.md` -> `*_after.md`.
+4. Request approval in the format `Approved Step N` when required, and do not open the next step's files until approval is received.
 
 ## Step Guide
 - **Step 1 – Solution Assessment (Optional)**: resolve uncertainty across multiple approaches. `docs/dev/feature_process/step1_solution_assessment.md`
 - **Step 2 – Feature Description**: capture problem framing, user stories, requirements, and success criteria. `docs/dev/feature_process/step2_feature_description.md`
-- **Step 3 – Development Plan**: break the work into atomic stages with dependencies, verification notes, and shared component references. `docs/dev/feature_process/step3_development_plan.md`
-- **Step 4 – Implementation**: execute staged work on a feature branch and maintain the implementation summary. `docs/dev/feature_process/step4_implementation.md`
+- **Step 3 – Development Plan**: break work into atomic stages with dependencies and verification notes. Start with `docs/dev/feature_process/step3_development_plan_before.md`, then follow the `do` and `after` files.
+- **Step 4 – Implementation**: execute staged work on a feature branch and maintain the implementation summary. Start with `docs/dev/feature_process/step4_implementation_before.md`, then follow the `do` and `after` files.
 
-Each file ends with instructions for when to proceed to the next step so you never overrun the context window.
+Each phase file ends with instructions for when to proceed so you never overrun the context window.
 
 ## Planning Artifacts
 Each step MUST be a separate file in `docs/plans/`:
@@ -58,7 +58,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Flag scope creep early and bounce back to planning steps rather than improvising mid-implementation
 - Keep projected work within roughly a day or eight Step 3 stages; otherwise recommend splitting the feature
 - Avoid database schema changes when possible—lean on existing models/fields
-- Reprint each step’s instructions (from the linked file) before you begin that step
+- Reprint the current step/phase instructions (from the linked file) before you begin that work
 
 **User**
 - Review and approve explicitly at each step

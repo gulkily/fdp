@@ -15,16 +15,35 @@ If you frequently see Claude/Codex derail because requirements evolve mid-stream
 - `docs/dev/feature_process/` – canonical instructions for each step. The assistant reprints these every time it advances.
   - `step1_solution_assessment.md`
   - `step2_feature_description.md`
-  - `step3_development_plan.md`
-  - `step4_implementation.md`
+  - `step3_development_plan_before.md`, `step3_development_plan_do.md`, `step3_development_plan_after.md`
+  - `step4_implementation_before.md`, `step4_implementation_do.md`, `step4_implementation_after.md`
+  - `step3_development_plan.md`, `step4_implementation.md` (compatibility entrypoints)
 - `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update a local README for navigation.
+
+## Reusing across projects (recommended)
+Use this repo as the single source of truth and sync it into each project with `git subtree`.
+
+One-time in a consuming project:
+```bash
+git remote add fdp <fdp-repo-url>
+git subtree add --prefix=docs/fdp fdp main --squash
+```
+
+Update later:
+```bash
+git fetch fdp
+git subtree pull --prefix=docs/fdp fdp main --squash
+```
+
+This keeps each project self-contained (no submodule workflow) while still letting you pull upstream FDP updates.
 
 ## How to run the chain with your AI pair
 1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of FEATURE_DEVELOPMENT_PROCESS.md.` Make the story explicit so the assistant starts from the user’s perspective.
 2. Let the assistant draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.
 3. When the doc hits the bar, reply verbatim with `Approved Step N, please continue to Step N+1.` The bot must stop until that phrase arrives, so you control scope creep.
-4. Repeat the review/approval loop for each step. Keep files uncommitted until approval so you can diff changes easily, then commit before advancing.
-5. Step 4 always happens on a dedicated feature branch with the entire approved plan already committed.
+4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
+5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.
+6. During Step 4, make at least one stage-scoped commit per implemented stage, and include that stage's Step 4 summary update in the same commit.
 
 The strict per-step files mean you always paste a small, targeted instruction block into the chat; no more scrolling through a 4k-token mega-brief.
 
@@ -36,10 +55,10 @@ The strict per-step files mean you always paste a small, targeted instruction bl
 | Step 3 – Development Plan | Break work into atomic stages with dependencies, verification notes, and component touchpoints. | `{feature}_step3_development_plan.md` |
 | Step 4 – Implementation | Execute stages sequentially on a feature branch, logging verification in a Step 4 summary. | `{feature}_step4_implementation_summary.md` |
 
-Each step file lists guardrails (page limits, “no code,” etc.) plus “Next” instructions so the model always knows when to stop.
+Each step/phase file lists guardrails plus "Next" instructions so the model always knows when to stop.
 
 ## Tips for stubborn assistants
-- **Reprint instructions**: before starting a step, force the assistant to paste the relevant `docs/dev/feature_process/stepX` file back to you. This keeps both sides aligned and provides an audit trail.
+- **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/dev/feature_process/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
 - **Call out warning signs early**: if a stage threatens to exceed the one-page or ~1-hour limit, bounce back to Step 2/3 instead of winging it mid-implementation.
 - **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
 - **Manual verification only**: Step 4 leans on quick smoke tests. If you need deeper coverage, capture that as a new feature request and restart the chain.
