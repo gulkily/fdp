@@ -32,6 +32,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - After the user explicitly responds `Approved Step 3`, create the Step 4 feature branch.
 - The first commit on that feature branch must contain only the approved Step 1-3 planning documents.
 - During Step 4, each completed implementation stage must be committed with its Step 4 summary update in the same commit before starting the next stage.
+- Once a feature has completed Step 4, treat its Step 1-4 documents as historical artifacts; start a new feature name for follow-on work instead of rewriting the original planning trail.
 
 **Plan review**: Do not begin Step 4 until the user explicitly responds `Approved Step 3`. The first commit after branching for Step 4 must capture the approved Step 1-3 planning files.
 
@@ -58,6 +59,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Flag scope creep early and bounce back to planning steps rather than improvising mid-implementation
 - Keep projected work within roughly a day or eight Step 3 stages; otherwise recommend splitting the feature
 - Avoid database schema changes when possible—lean on existing models/fields
+- Treat completed Step 4 feature tracks as historical; create a new feature name for new work even when it overlaps an earlier story
 - Reprint the current step/phase instructions (from the linked file) before you begin that work
 
 **User**

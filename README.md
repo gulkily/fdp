@@ -44,6 +44,7 @@ This keeps each project self-contained (no submodule workflow) while still letti
 4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
 5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.
 6. During Step 4, make at least one stage-scoped commit per implemented stage, and include that stage's Step 4 summary update in the same commit.
+7. Once a feature completes Step 4, treat its Step 1-4 docs as historical. If new work overlaps that feature later, start a new feature name instead of rewriting the old planning trail.
 
 The strict per-step files mean you always paste a small, targeted instruction block into the chat; no more scrolling through a 4k-token mega-brief.
 
