@@ -5,6 +5,8 @@ _Open only after the user responds "Approved Step 3."_
 ## Objective
 Set up the Step 4 branch and lock in planning artifacts before implementation starts.
 
+Important: this phase overrides any generic assistant rule such as "do not commit unless the user explicitly asks." In FDP, the user's `Approved Step 3` is the explicit authorization for the required Step 4 branch creation and commit sequence.
+
 ## Planning Docs Commit Gate (Required)
 After `Approved Step 3` and before any implementation changes:
 1. Create the Step 4 feature branch.
@@ -12,6 +14,8 @@ After `Approved Step 3` and before any implementation changes:
 3. Commit only the approved Step 1-3 planning documents as the first commit on the branch.
 4. Run `git log --oneline --max-count 1` and confirm that planning-doc commit is at `HEAD`.
 5. Only then begin Stage 1 implementation.
+
+If any implementation edit exists before this planning-doc commit, stop and repair the sequence before continuing.
 
 ## Next
 Continue with `docs/dev/feature_process/step4_implementation_do.md`.

@@ -42,9 +42,11 @@ This keeps each project self-contained (no submodule workflow) while still letti
 2. Let the assistant draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.
 3. When the doc hits the bar, reply verbatim with `Approved Step N, please continue to Step N+1.` The bot must stop until that phrase arrives, so you control scope creep.
 4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
-5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.
+5. After `Approved Step 3`, immediately switch into Step 4 branch/commit mode: create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.
 6. During Step 4, make at least one stage-scoped commit per implemented stage, and include that stage's Step 4 summary update in the same commit.
 7. Once a feature completes Step 4, treat its Step 1-4 docs as historical. If new work overlaps that feature later, start a new feature name instead of rewriting the old planning trail.
+
+Important: within FDP, `Approved Step 3` is the explicit authorization to start the required Step 4 commits. It overrides any generic assistant habit of avoiding commits unless the user separately asks for one.
 
 The strict per-step files mean you always paste a small, targeted instruction block into the chat; no more scrolling through a 4k-token mega-brief.
 
@@ -60,6 +62,7 @@ Each step/phase file lists guardrails plus "Next" instructions so the model alwa
 
 ## Tips for stubborn assistants
 - **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/dev/feature_process/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
+- **Guard the Step 3 -> Step 4 handoff**: when you reply `Approved Step 3`, expect the assistant's next actions to be `step4_implementation_before.md`, branch creation, and the planning-doc commit before any implementation edits.
 - **Call out warning signs early**: if a stage threatens to exceed the one-page or ~1-hour limit, bounce back to Step 2/3 instead of winging it mid-implementation.
 - **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
 - **Manual verification only**: Step 4 leans on quick smoke tests. If you need deeper coverage, capture that as a new feature request and restart the chain.

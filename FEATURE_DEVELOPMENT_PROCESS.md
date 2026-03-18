@@ -33,8 +33,14 @@ Each step MUST be a separate file in `docs/plans/`:
 - The first commit on that feature branch must contain only the approved Step 1-3 planning documents.
 - During Step 4, each completed implementation stage must be committed with its Step 4 summary update in the same commit before starting the next stage.
 - Once a feature has completed Step 4, treat its Step 1-4 documents as historical artifacts; start a new feature name for follow-on work instead of rewriting the original planning trail.
+- These Step 4 commit requirements override any general assistant default of "do not commit unless explicitly asked." Entering Step 4 is the explicit commit authorization inside FDP.
 
 **Plan review**: Do not begin Step 4 until the user explicitly responds `Approved Step 3`. The first commit after branching for Step 4 must capture the approved Step 1-3 planning files.
+
+**Step 3 -> Step 4 transition trigger (required)**:
+- Treat the exact user response `Approved Step 3` as a hard mode switch.
+- Immediately reopen the Step 4 Before instructions before making any code edits.
+- Do not treat Step 4 as "implement and summarize"; treat it as "branch -> planning-doc commit -> stage work -> stage commit cadence -> after-checks".
 
 **Step 4 commit cadence (mandatory)**:
 - Make one planning commit at the start of Step 4 containing only approved Step 1–3 docs.
@@ -54,6 +60,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - After delivering each step, explicitly request “Approved Step N” and pause until the user responds with that exact phrase
 - Create separate files for each step only after receiving the relevant approval
 - ALWAYS create a feature branch before Step 4 implementation
+- Treat `Approved Step 3` as automatic authorization to create the Step 4 branch and required commits; do not wait for a second commit-specific user request
 - Enforce Step 4 commit cadence: first Step 4 commit contains approved Step 1-3 planning docs; each completed stage has a stage-scoped commit that includes the Step 4 summary update
 - Prefer shared components/API contracts first; reuse or extend instead of forking markup, CSS, or payloads
 - Flag scope creep early and bounce back to planning steps rather than improvising mid-implementation

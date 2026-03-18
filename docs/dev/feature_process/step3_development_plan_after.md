@@ -11,6 +11,8 @@ Finalize Step 3 for review, enforce approval gating, and hand off cleanly to Ste
 3. Deliver the Step 3 artifact for user review and explicitly request `Approved Step 3`.
 4. Stop and wait. Do not begin Step 4 until `Approved Step 3` is received.
 5. Keep Step 1-3 planning docs uncommitted here; Step 4 handles the planning-doc commit as the first commit on the feature branch.
+6. Once `Approved Step 3` arrives, the very next action is to open `step4_implementation_before.md`; do not start coding, editing, or summarizing Step 4 from memory.
+7. Treat `Approved Step 3` as the authorization boundary for the required Step 4 branch creation and commits.
 
 ## Next
 After the user responds `Approved Step 3`, continue with `docs/dev/feature_process/step4_implementation_before.md`.

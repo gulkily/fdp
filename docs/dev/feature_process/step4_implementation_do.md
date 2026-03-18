@@ -11,6 +11,7 @@ Execute the plan in atomic stages on a dedicated feature branch, documenting pro
 - Before adding new presentation markup or API payloads, confirm whether a canonical component/contract already exists per the Step 2 inventory and reuse/extend instead of duplicating
 - Require one stage-scoped commit per completed stage; do not batch multiple stages into one commit
 - Commit code plus the Step 4 summary update for that stage in the same commit before beginning the next stage
+- Do not rely on memory for commit cadence; if uncertain, reopen `step4_implementation_before.md` and this file before proceeding
 
 ## Stage Boundary Protocol (Required)
 At every stage boundary (including Stage 1), complete this sequence before starting the next stage:
