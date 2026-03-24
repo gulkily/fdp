@@ -3,9 +3,12 @@
 ## Overview
 Feature work flows through four tightly scoped steps with an optional solution assessment upfront. To keep the instructions inside the context window, the detailed guidance for each step now lives in separate files that you open only when you are ready for that step.
 
+## Repository Boundary
+Instruction files under `docs/dev/feature_process/` belong to the FDP repository. If FDP is included in another repository as a submodule or vendored directory, resolve those paths relative to the FDP repository root, not the host repository root. Planning artifacts still belong in the host repository under `docs/plans/`.
+
 ## How to Use This Chain
 1. Start with the highest-numbered approved step (usually Step 1 unless explicitly skipped).
-2. Read only the relevant instruction file in `docs/dev/feature_process/` and reprint it before starting work.
+2. Read only the relevant instruction file in FDP's `docs/dev/feature_process/` directory and reprint it before starting work.
 3. For Steps 3 and 4, use phase files in order: `*_before.md` -> `*_do.md` -> `*_after.md`.
 4. Request approval in the format `Approved Step N` when required, and do not open the next step's files until approval is received.
 
@@ -58,7 +61,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Flag scope creep early and bounce back to planning steps rather than improvising mid-implementation
 - Keep projected work within roughly a day or eight Step 3 stages; otherwise recommend splitting the feature
 - Avoid database schema changes when possible—lean on existing models/fields
-- Reprint the current step/phase instructions (from the linked file) before you begin that work
+- Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
 
 **User**
 - Review and approve explicitly at each step
