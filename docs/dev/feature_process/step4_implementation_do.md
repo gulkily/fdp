@@ -25,6 +25,10 @@ At every stage boundary (including Stage 1), complete this sequence before start
 ## Implementation Summary Artifact
 - Location: `docs/plans/`
 - Filename: `{feature_name}_step4_implementation_summary.md`
+- Preferred format per stage:
+  - One `## Stage N - {title}` header per completed stage
+  - Flat bullets for `Changes`, `Verification`, and `Notes`
+  - Nested bullets under those fields when listing multiple concrete items
 - Contents per stage:
   - Stage number/name
   - Changes shipped
@@ -38,6 +42,8 @@ _Template_
 - Verification:
 - Notes:
 ```
+
+Prefer this header-plus-bullets structure over prose paragraphs so the implementation summary stays easy to diff against the Step 3 plan and easy to review at stage boundaries.
 
 ## Next
 After all planned stages are implemented and committed, continue with `docs/dev/feature_process/step4_implementation_after.md`.

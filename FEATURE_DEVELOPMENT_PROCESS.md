@@ -62,6 +62,8 @@ Each step MUST be a separate file in `docs/plans/`:
 - Keep projected work within roughly a day or eight Step 3 stages; otherwise recommend splitting the feature
 - Avoid database schema changes when possible—lean on existing models/fields
 - Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
+- For Step 3, prefer `## Stage N` headers with flat bullet lists for each stage field so plans stay easy to scan and review
+- For Step 4 summaries, prefer `## Stage N - title` headers with bullet lists for changes, verification, and notes so stage handoff stays easy to audit
 
 **User**
 - Review and approve explicitly at each step

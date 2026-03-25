@@ -52,8 +52,8 @@ The strict per-step files mean you always paste a small, targeted instruction bl
 | --- | --- | --- |
 | Step 1 – Solution Assessment (optional) | Resolve ambiguity across competing approaches. | ≤1-page pros/cons doc ending with a recommendation. |
 | Step 2 – Feature Description | Nail down problem context, user stories, requirements, shared components, and success criteria. | `{feature}_step2_feature_description.md` |
-| Step 3 – Development Plan | Break work into atomic stages with dependencies, verification notes, and component touchpoints. | `{feature}_step3_development_plan.md` |
-| Step 4 – Implementation | Execute stages sequentially on a feature branch, logging verification in a Step 4 summary. | `{feature}_step4_implementation_summary.md` |
+| Step 3 – Development Plan | Break work into atomic stages with dependencies, verification notes, and component touchpoints. Prefer `## Stage N` headers plus flat bullets for each stage field. | `{feature}_step3_development_plan.md` |
+| Step 4 – Implementation | Execute stages sequentially on a feature branch, logging verification in a Step 4 summary. Prefer `## Stage N - title` headers plus bullets for changes, verification, and notes. | `{feature}_step4_implementation_summary.md` |
 
 Each step/phase file lists guardrails plus "Next" instructions so the model always knows when to stop.
 
