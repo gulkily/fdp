@@ -18,7 +18,7 @@ If you frequently see Claude/Codex derail because requirements evolve mid-stream
   - `step3_development_plan_before.md`, `step3_development_plan_do.md`, `step3_development_plan_after.md`
   - `step4_implementation_before.md`, `step4_implementation_do.md`, `step4_implementation_after.md`
   - `step3_development_plan.md`, `step4_implementation.md` (compatibility entrypoints)
-- `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update a local README for navigation.
+- `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update `docs/plans/README.md` for navigation.
 
 ## Reusing across projects (recommended)
 Use this repo as the single source of truth and sync it into each project with `git subtree`.
@@ -50,23 +50,23 @@ The strict per-step files mean you always paste a small, targeted instruction bl
 ## What each step enforces
 | Step | Goal | Key outputs |
 | --- | --- | --- |
-| Step 1 – Solution Assessment (optional) | Resolve ambiguity across competing approaches. | ≤1-page pros/cons doc ending with a recommendation. |
-| Step 2 – Feature Description | Nail down problem context, user stories, requirements, shared components, and success criteria. | `{feature}_step2_feature_description.md` |
-| Step 3 – Development Plan | Break work into atomic stages with dependencies, verification notes, and component touchpoints. Prefer `## Stage N` headers plus flat bullets for each stage field. | `{feature}_step3_development_plan.md` |
-| Step 4 – Implementation | Execute stages sequentially on a feature branch, logging verification in a Step 4 summary. Prefer `## Stage N - title` headers plus bullets for changes, verification, and notes. | `{feature}_step4_implementation_summary.md` |
+| Step 1 – Solution Assessment (optional) | Resolve ambiguity across competing approaches. | ≤1-page pros/cons doc ending with a recommendation. |
+| Step 2 – Feature Description | Nail down problem context, user stories, requirements, shared components, and success criteria. | `{feature}_step2_feature_description.md` |
+| Step 3 – Development Plan | Break work into atomic stages with dependencies, verification notes, and component touchpoints. Prefer `## Stage N` headers plus flat bullets for each stage field. | `{feature}_step3_development_plan.md` |
+| Step 4 – Implementation | Execute stages sequentially on a feature branch, logging verification in a Step 4 summary. Prefer `## Stage N - title` headers plus bullets for changes, verification, and notes. | `{feature}_step4_implementation_summary.md` |
 
 Each step/phase file lists guardrails plus "Next" instructions so the model always knows when to stop.
 
 ## Tips for stubborn assistants
 - **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/dev/feature_process/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
-- **Call out warning signs early**: if a stage threatens to exceed the one-page or ~1-hour limit, bounce back to Step 2/3 instead of winging it mid-implementation.
-- **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
-- **Manual verification only**: Step 4 leans on quick smoke tests. If you need deeper coverage, capture that as a new feature request and restart the chain.
+- **Call out warning signs early**: if a stage threatens to exceed the one-page or ~1-hour limit, bounce back to Step 2/3 instead of winging it mid-implementation.
+- **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
+- **Manual verification only**: Step 4 leans on quick smoke tests. If you need deeper coverage, capture that as a new feature request and restart the chain.
 
 ## Extending the process
 - Need a domain-specific checklist? Fork one of the step files, add the extra bullets, and point your assistant to the customized version.
 - Supporting artifacts (mockups, DB diagrams) belong beside the step docs in `docs/plans/{feature}/`. Reference them inside the deliverables but keep the main files concise.
-- When a feature balloons past eight stages, spin up a new feature name with its own Step 2/3 docs to keep things reviewable.
+- When a feature balloons past eight stages, spin up a new feature name with its own Step 2/3 docs to keep things reviewable.
 
 ## Getting help
 Because every instruction lives in plain Markdown, you can diff tweaks, annotate lines for your assistant, or even inline reminders like “STOP after this file.” When in doubt, start from `FEATURE_DEVELOPMENT_PROCESS.md` and follow the breadcrumbs.
