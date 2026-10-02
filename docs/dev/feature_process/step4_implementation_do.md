@@ -25,6 +25,7 @@ At every stage boundary (including Stage 1), complete this sequence before start
 ## Implementation Summary Artifact
 - Location: `docs/plans/`
 - Filename: `{feature_name}_step4_implementation_summary.md`
+- Begin with the required compact Plan navigation bar linking Steps 1–4; omit Step 1 only when it was skipped, and use the relative-link template in `FEATURE_DEVELOPMENT_PROCESS.md`
 - Preferred format per stage:
   - One `## Stage N - {title}` header per completed stage
   - Flat bullets for `Changes`, `Verification`, and `Notes`

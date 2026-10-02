@@ -10,6 +10,8 @@ Break the feature into atomic implementation stages, identify dependencies, and 
 - Filename: `{feature_name}_step3_development_plan.md`
 
 ## Structure
+Begin with the required compact Plan navigation bar linking Steps 1–4; omit Step 1 only when it was skipped, and use the relative-link template in `FEATURE_DEVELOPMENT_PROCESS.md`.
+
 Start with a compact `## Key Risks` section. For every material risk, include its impact, early warning or validation point, and mitigation. Prefix risks that could make the feature unusable, threaten data, or require rollback with `**High risk:**`.
 
 Render the plan using this preferred format for every stage:

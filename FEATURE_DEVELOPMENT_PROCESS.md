@@ -29,6 +29,12 @@ Each step MUST be a separate file in `docs/plans/`:
 
 **Directory structure**: When a feature accumulates four or more planning artifacts (e.g., all Step 1–4 docs plus auxiliary notes), move them into `docs/plans/{feature_name}/`. Keep smaller efforts at the root until they grow, and update `docs/plans/README.md` when a new folder appears so others can navigate.
 
+**Plan navigation (required)**: Start every Step 1–4 artifact with the same compact navigation bar. Use relative links so it works whether the artifacts live directly in `docs/plans/` or in `docs/plans/{feature_name}/`. Include links to all planned artifacts; if optional Step 1 is skipped, omit only that link.
+
+```md
+> **Feature plan:** [Step 1](./{feature_name}_step1_solution_assessment.md) · [Step 2](./{feature_name}_step2_feature_description.md) · [Step 3](./{feature_name}_step3_development_plan.md) · [Step 4](./{feature_name}_step4_implementation_summary.md)
+```
+
 **Commit discipline**:
 - Keep Step 1-3 planning documents uncommitted while they are being drafted/revised.
 - Do not commit Step 1-3 planning documents when Step 1 or Step 2 is approved.
@@ -62,6 +68,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Keep projected work within roughly a day or eight Step 3 stages; otherwise recommend splitting the feature
 - Avoid database schema changes when possible—lean on existing models/fields
 - Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
+- Add the required Plan navigation bar to every Step 1–4 artifact so the complete feature record is navigable in GitHub
 - For Step 3, prefer `## Stage N` headers with flat bullet lists for each stage field so plans stay easy to scan and review
 - In Step 2, explicitly surface material risks with their impact, early validation, and mitigation; in Step 3, begin with `## Key Risks` and treat unresolved material risks as gates before dependent stages
 - For Step 4 summaries, prefer `## Stage N - title` headers with bullet lists for changes, verification, and notes so stage handoff stays easy to audit

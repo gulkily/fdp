@@ -10,6 +10,7 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Filename: `{feature_name}_step2_feature_description.md`
 
 ## Structure
+- Plan navigation: begin with the required compact Plan navigation bar linking Steps 1–4; omit Step 1 only when it was skipped, and use the relative-link template in `FEATURE_DEVELOPMENT_PROCESS.md`
 - Problem: 1–2 sentences
 - User stories: bullet list in the format “As [role], I want [goal] so that [benefit]”
 - Core requirements: 3–5 bullets capturing non-negotiable behaviors
