@@ -69,6 +69,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Avoid database schema changes when possible—lean on existing models/fields
 - Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
 - Add the required Plan navigation bar to every Step 1–4 artifact so the complete feature record is navigable in GitHub
+- In Step 1, record the user's original request first under `## Original Query`; preserve it almost verbatim, allowing only grammar, spelling, capitalization, and obvious punctuation/formatting corrections
 - For Step 3, prefer `## Stage N` headers with flat bullet lists for each stage field so plans stay easy to scan and review
 - In Step 2, explicitly surface material risks with their impact, early validation, and mitigation; in Step 3, begin with `## Key Risks` and treat unresolved material risks as gates before dependent stages
 - For Step 4 summaries, prefer `## Stage N - title` headers with bullet lists for changes, verification, and notes so stage handoff stays easy to audit
