@@ -59,7 +59,7 @@ Each step/phase file lists guardrails plus "Next" instructions so the model alwa
 
 ## Tips for stubborn assistants
 - **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/dev/feature_process/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
-- **Call out warning signs early**: if a stage threatens to exceed the one-page or ~1-hour limit, bounce back to Step 2/3 instead of winging it mid-implementation.
+- **Call out risks early**: Step 2 records material risks, their impact, early validation, and mitigation. Step 3 starts with `## Key Risks` and makes unresolved risks gates before dependent work begins.
 - **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
 - **Manual verification only**: Step 4 leans on quick smoke tests. If you need deeper coverage, capture that as a new feature request and restart the chain.
 

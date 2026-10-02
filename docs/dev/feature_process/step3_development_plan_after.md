@@ -6,7 +6,7 @@ _Open only after completing Step 3 Do._
 Finalize Step 3 for review, enforce approval gating, and hand off cleanly to Step 4.
 
 ## After Checklist
-1. Verify the plan is <=1 page and each stage includes goal, dependencies, expected changes, verification, and risks/open questions.
+1. Verify the plan is <=1 page, begins with `## Key Risks`, and each stage includes goal, dependencies, expected changes, verification, and risks/open questions with impact, early warning, and mitigation.
 2. Verify stage sizing is still atomic (about <=1 hour per stage) and split oversized stages before review.
 3. Deliver the Step 3 artifact for user review and explicitly request `Approved Step 3`.
 4. Stop and wait. Do not begin Step 4 until `Approved Step 3` is received.

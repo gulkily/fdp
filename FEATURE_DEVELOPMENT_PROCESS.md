@@ -63,6 +63,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Avoid database schema changes when possible—lean on existing models/fields
 - Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
 - For Step 3, prefer `## Stage N` headers with flat bullet lists for each stage field so plans stay easy to scan and review
+- In Step 2, explicitly surface material risks with their impact, early validation, and mitigation; in Step 3, begin with `## Key Risks` and treat unresolved material risks as gates before dependent stages
 - For Step 4 summaries, prefer `## Stage N - title` headers with bullet lists for changes, verification, and notes so stage handoff stays easy to audit
 
 **User**
@@ -73,8 +74,8 @@ Each step MUST be a separate file in `docs/plans/`:
 
 ## Warning Signs
 - **Step 1**: >1 page, >4 options, or verbose explanations
-- **Step 2**: >1 page, includes code/DB details, or drifts into UI mockups
-- **Step 3**: >1 page, stages >2 hours, or tangled dependencies
+- **Step 2**: >1 page, includes code/DB details, drifts into UI mockups, or buries material risks outside the risks-and-mitigations section
+- **Step 3**: >1 page, stages >2 hours, tangled dependencies, missing `## Key Risks`, or risks without impact, early warning, and mitigation
 - **Step 4**: Missing feature branch, missing initial Step 1-3 planning-doc commit, skipping stages, changing requirements mid-flight, a stage without a stage-scoped commit + summary update, or commit count lower than `1 + stage count`
 
 ## Workflows

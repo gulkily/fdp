@@ -10,6 +10,8 @@ Break the feature into atomic implementation stages, identify dependencies, and 
 - Filename: `{feature_name}_step3_development_plan.md`
 
 ## Structure
+Start with a compact `## Key Risks` section. For every material risk, include its impact, early warning or validation point, and mitigation. Prefix risks that could make the feature unusable, threaten data, or require rollback with `**High risk:**`.
+
 Render the plan using this preferred format for every stage:
 
 ```md
@@ -19,7 +21,9 @@ Render the plan using this preferred format for every stage:
 - Expected changes: ...
 - Verification approach: ...
 - Risks or open questions:
-  - ...
+  - Impact: ...
+  - Early warning / validation: ...
+  - Mitigation: ...
 - Canonical components/API contracts touched: ...
 ```
 
@@ -28,6 +32,7 @@ For each stage include:
 - Flat bullet items for Goal, Dependencies, Expected changes, Verification approach, Risks or open questions, and Canonical components/API contracts touched
 - Conceptual expected changes only; include database/function signature updates without implementations
 - Bullet points under Risks or open questions whenever there is more than one item
+- Treat risks as planning gates, not a formality: a stage with a material unresolved risk must include the validation that resolves it before dependent work begins
 - Canonical components/API contracts as an explicit bullet, not buried in prose
 
 Additional requirements:
@@ -38,6 +43,7 @@ Additional requirements:
 
 ## Guardrails
 - Avoid full code, HTML templates, detailed SQL, or verbose explanations
+- Make risks easy to review. Keep `## Key Risks` near the top and repeat stage-specific risks where the work that addresses them occurs.
 - Keep stage count manageable; if work exceeds about eight stages or a day of effort, split into separate features before moving on
 
 ## Next
