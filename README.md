@@ -63,12 +63,13 @@ Every Step 1–4 artifact begins with a compact relative-link bar to the other a
 - **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/dev/feature_process/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
 - **Call out risks early**: Step 2 records material risks, their impact, early validation, and mitigation. Step 3 starts with `## Key Risks` and makes unresolved risks gates before dependent work begins.
 - **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
+- **Finish a feature, not a layer**: Every FDP cycle has a Completion Contract: a normal user entry point, an end-to-end outcome, and required failure/recovery behavior. Split larger stories into independently usable vertical slices; label component-only work as internal maintenance.
 - **Manual verification only**: Step 4 leans on quick smoke tests. If you need deeper coverage, capture that as a new feature request and restart the chain.
 
 ## Extending the process
 - Need a domain-specific checklist? Fork one of the step files, add the extra bullets, and point your assistant to the customized version.
 - Supporting artifacts (mockups, DB diagrams) belong beside the step docs in `docs/plans/{feature}/`. Reference them inside the deliverables but keep the main files concise.
-- When a feature balloons past eight stages, spin up a new feature name with its own Step 2/3 docs to keep things reviewable.
+- When a feature balloons past eight stages, spin up a new feature name with its own Step 2/3 docs. Each resulting cycle must still be an independently usable vertical slice, not one incomplete layer of a larger feature.
 
 ## Getting help
 Because every instruction lives in plain Markdown, you can diff tweaks, annotate lines for your assistant, or even inline reminders like “STOP after this file.” When in doubt, start from `FEATURE_DEVELOPMENT_PROCESS.md` and follow the breadcrumbs.

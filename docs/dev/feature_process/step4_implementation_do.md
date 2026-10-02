@@ -9,6 +9,7 @@ Execute the plan in atomic stages on a dedicated feature branch, documenting pro
 - Work stages sequentially, keeping each stage <2 hours
 - Favor the simplest viable implementation first; iterate only when necessary
 - Before adding new presentation markup or API payloads, confirm whether a canonical component/contract already exists per the Step 2 inventory and reuse/extend instead of duplicating
+- Implement and verify the Step 3 Completion Contract as part of this cycle. Do not stop after a subsystem, direct-only route, or preparatory asset works; complete the normal user entry point, end-to-end outcome, and required failure/recovery behavior.
 - Require one stage-scoped commit per completed stage; do not batch multiple stages into one commit
 - Commit code plus the Step 4 summary update for that stage in the same commit before beginning the next stage
 

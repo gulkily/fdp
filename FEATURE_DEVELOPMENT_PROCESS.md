@@ -65,7 +65,8 @@ Each step MUST be a separate file in `docs/plans/`:
 - Enforce Step 4 commit cadence: first Step 4 commit contains approved Step 1-3 planning docs; each completed stage has a stage-scoped commit that includes the Step 4 summary update
 - Prefer shared components/API contracts first; reuse or extend instead of forking markup, CSS, or payloads
 - Flag scope creep early and bounce back to planning steps rather than improvising mid-implementation
-- Keep projected work within roughly a day or eight Step 3 stages; otherwise recommend splitting the feature
+- Define every feature as an independently releasable vertical slice: a user can enter through the normal UI/CLI flow, achieve the intended outcome end-to-end, and encounter the required failure/recovery behavior. Do not call a component-only, direct-route-only, or preparatory change a feature; label it internal maintenance instead.
+- When a larger story needs multiple FDP cycles, split it into independently usable vertical slices, not horizontal layers. Keep projected work within roughly a day or eight Step 3 stages; otherwise rescope the slice before implementation.
 - Avoid database schema changes when possible—lean on existing models/fields
 - Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
 - Add the required Plan navigation bar to every Step 1–4 artifact so the complete feature record is navigable in GitHub
@@ -83,8 +84,8 @@ Each step MUST be a separate file in `docs/plans/`:
 ## Warning Signs
 - **Step 1**: >1 page, >4 options, or verbose explanations
 - **Step 2**: >1 page, includes code/DB details, drifts into UI mockups, or buries material risks outside the risks-and-mitigations section
-- **Step 3**: >1 page, stages >2 hours, tangled dependencies, missing `## Key Risks`, or risks without impact, early warning, and mitigation
-- **Step 4**: Missing feature branch, missing initial Step 1-3 planning-doc commit, skipping stages, changing requirements mid-flight, a stage without a stage-scoped commit + summary update, or commit count lower than `1 + stage count`
+- **Step 3**: >1 page, stages >2 hours, tangled dependencies, missing `## Completion Contract` or `## Key Risks`, a plan that ends with an unusable subsystem, or risks without impact, early warning, and mitigation
+- **Step 4**: Missing feature branch, missing initial Step 1-3 planning-doc commit, skipping stages, changing requirements mid-flight, a stage without a stage-scoped commit + summary update, an implementation that works only through a direct/internal path, or commit count lower than `1 + stage count`
 
 ## Workflows
 - **Simple**: Step 2 → Step 3 → Step 4 (feature branch → implement stages → test/commit → complete)

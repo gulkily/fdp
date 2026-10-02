@@ -14,6 +14,7 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Problem: 1–2 sentences
 - User stories: bullet list in the format “As [role], I want [goal] so that [benefit]”
 - Core requirements: 3–5 bullets capturing non-negotiable behaviors
+- Complete feature boundary: identify the normal user entry point, the observable end-to-end outcome, important failure/recovery behavior, and the release condition that makes this cycle independently usable
 - Risks and mitigations: 2–4 bullets; state the user or delivery impact, the earliest way to detect the risk, and the mitigation or validation needed before Step 3
 - Shared component inventory: enumerate every existing UI/API surface that already renders the data; specify whether the feature reuses/extends the canonical component or needs a new one (with rationale)
 - Simple user flow: numbered steps
@@ -22,6 +23,7 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 ## Guardrails
 - Avoid implementation details, code, database schema, UI mockups, or verbose descriptions
 - Make material risks conspicuous. Do not hide a risk inside a requirement, user story, or component note; call out any risk that could make the feature unusable, require a rollout/rollback, or invalidate the proposed scope.
+- Do not frame a component, API, cache, data migration, or hidden route as a completed feature. If this work is one cycle in a larger story, scope it as an independently releasable vertical slice that users can reach through the normal UI/CLI flow; otherwise label it internal maintenance work rather than a feature.
 - Keep the doc lightweight enough to consume at a glance
 
 ## Next

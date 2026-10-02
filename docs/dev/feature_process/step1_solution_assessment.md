@@ -14,7 +14,7 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 - Original query: place the user's original request first, under an `## Original Query` heading. Preserve its wording, order, detail, and intent almost verbatim; correct only grammar, spelling, capitalization, and obvious punctuation/formatting errors. Do not summarize, rewrite for clarity, or omit parts of a multi-part request.
 - Problem statement (1 sentence)
 - ≥2 solution options tagged sequentially (Option A/B/C/etc.) with pros/cons listed as bullets
-- Clear recommendation with brief justification
+- Clear recommendation with brief justification, including whether it can deliver an independently usable end-to-end feature slice
 
 ## Guardrails
 - Keep content at a high level; no implementation details, code, or verbose prose
