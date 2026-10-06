@@ -12,6 +12,7 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 ## Structure
 - Standard Plan navigation bar (template in `FEATURE_DEVELOPMENT_PROCESS.md`)
 - `## Original Query` first: preserve the request except grammar, spelling, capitalization, punctuation, and formatting fixes; do not summarize or omit anything
+- When the query alone would leave the requested outcome unclear, follow it with `## Understood Intent`: a brief, clearly labeled statement of the inferred goal and relevant context. Do not invent scope or replace the original query; omit this section when it adds no useful clarification.
 - Problem statement (1 sentence)
 - ≥2 solution options tagged sequentially (Option A/B/C/etc.) with pros/cons listed as bullets
 - Recommendation, including vertical-slice viability

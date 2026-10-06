@@ -76,7 +76,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Avoid database schema changes when possible—lean on existing models/fields
 - Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
 - Add the Plan navigation bar to every Step 1–4 artifact
-- Step 1 starts with `## Original Query`: preserve the request except mechanical grammar, spelling, capitalization, punctuation, and formatting fixes
+- Step 1 starts with `## Original Query`: preserve the request except mechanical grammar, spelling, capitalization, punctuation, and formatting fixes; when needed, follow it with a brief, clearly labeled `## Understood Intent` that clarifies inferred goal/context without inventing scope
 - For Step 3, prefer `## Stage N` headers with flat bullet lists for each stage field so plans stay easy to scan and review
 - Step 2 risks state impact, early validation, and mitigation; Step 3 begins with `## Key Risks`, and unresolved risks block dependents
 - For Step 4 summaries, prefer `## Stage N - title` headers with bullet lists for changes, verification, and notes so stage handoff stays easy to audit
