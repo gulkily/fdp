@@ -12,7 +12,7 @@ Break the feature into atomic implementation stages, identify dependencies, and 
 ## Structure
 Begin with the standard Plan navigation bar (template in `FEATURE_DEVELOPMENT_PROCESS.md`; omit skipped Step 1).
 
-Then add `## Completion Contract`: normal entry, end-to-end outcome, required recovery, deployment/external verification, release condition.
+Then add `## Completion Contract`: normal entry, end-to-end outcome, required recovery, deployment/external verification, and release condition. For documentation-only work, instead state the approved allowed documentation file scope, intended audience/outcome, document completion/recovery boundary, evidence boundary, and which runtime/deployment checks are not applicable.
 
 Then add `## Key Risks`: impact, early validation, mitigation. Prefix usability, data, or rollback risks `**High risk:**`.
 
@@ -39,6 +39,7 @@ For each stage include:
 - Resolve each material risk before dependent work begins
 - Canonical components/API contracts as an explicit bullet, not buried in prose
 - Include all wiring, operations, and verification needed for the Completion Contract; split stories into vertical slices, not layers
+- For documentation-only work, keep every expected change within the approved documentation file scope and identify the evidence and document-integrity checks for that stage
 
 Additional requirements:
 - Stages should be about <=1 hour or <=50 lines of change; split anything larger before implementation
@@ -50,6 +51,7 @@ Additional requirements:
 - Avoid full code, HTML templates, detailed SQL, or verbose explanations
 - Keep `## Key Risks` near the top and repeat stage-specific risks
 - If the Completion Contract cannot be met, rescope in Step 2; component-only work is internal maintenance
+- Do not use documentation-only scope to change application source, tests, CI, deployment configuration, generated artifacts, or another unapproved file class; return to Step 2 if that becomes necessary
 - Keep stage count manageable; if work exceeds about eight stages or a day of effort, split into separate features before moving on
 
 ## Next

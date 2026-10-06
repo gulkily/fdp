@@ -3,7 +3,7 @@
 _Open only after the user responds "Approved Step 3."_
 
 ## Objective
-Set up the Step 4 branch and lock in planning artifacts before implementation starts.
+Set up the Step 4 branch and lock in planning artifacts before implementation starts. For documentation-only work, confirm that the approved Step 2/3 artifacts name the allowed documentation file scope.
 
 ## Planning Docs Commit Gate (Required)
 After `Approved Step 3` and before any implementation changes:

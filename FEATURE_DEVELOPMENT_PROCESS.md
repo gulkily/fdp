@@ -16,7 +16,7 @@ Instruction files under `docs/dev/feature_process/` belong to the FDP repository
 - **Step 1 – Solution Assessment (Optional)**: resolve uncertainty across multiple approaches. `docs/dev/feature_process/step1_solution_assessment.md`
 - **Step 2 – Feature Description**: capture problem framing, user stories, requirements, and success criteria. `docs/dev/feature_process/step2_feature_description.md`
 - **Step 3 – Development Plan**: break work into atomic stages with dependencies and verification notes. Start with `docs/dev/feature_process/step3_development_plan_before.md`, then follow the `do` and `after` files.
-- **Step 4 – Implementation**: execute staged work on a feature branch and maintain the implementation summary. Start with `docs/dev/feature_process/step4_implementation_before.md`, then follow the `do` and `after` files.
+- **Step 4 – Implementation**: execute the approved artifact on a feature branch and maintain the implementation summary. The artifact may be application changes or explicitly scoped documentation-only work. Start with `docs/dev/feature_process/step4_implementation_before.md`, then follow the `do` and `after` files.
 
 Each phase file ends with instructions for when to proceed so you never overrun the context window.
 
@@ -40,19 +40,24 @@ Each step MUST be a separate file in `docs/plans/`:
 - Do not commit Step 1-3 planning documents when Step 1 or Step 2 is approved.
 - After the user explicitly responds `Approved Step 3`, create the Step 4 feature branch.
 - The first commit on that feature branch must contain only the approved Step 1-3 planning documents.
-- During Step 4, each completed implementation stage must be committed with its Step 4 summary update in the same commit before starting the next stage.
+- During Step 4, each completed stage must be committed with its Step 4 summary update in the same commit before starting the next stage.
 
 **Plan review**: Do not begin Step 4 until the user explicitly responds `Approved Step 3`. The first commit after branching for Step 4 must capture the approved Step 1-3 planning files.
 
 **Step 4 commit cadence (mandatory)**:
 - Make one planning commit at the start of Step 4 containing only approved Step 1–3 docs.
-- Then make at least one stage-scoped implementation commit per Step 3 stage.
+- Then make at least one stage-scoped artifact commit per Step 3 stage.
 - Do not start Stage `N+1` until Stage `N` has:
-  - manual verification completed,
+  - applicable verification completed,
   - Step 4 summary updated for that stage,
   - a commit recorded on the branch.
 - Do not squash/rebase/amend stage commits during active Step 4 execution.
 - Expected minimum commit count by end of Step 4: `1 + (# of Step 3 stages)`.
+
+**Documentation-only scope**:
+- Documentation-only work is permitted only when Step 2 names it as the work type and names the allowed documentation file scope; Step 3 must retain that boundary in its Completion Contract.
+- Branching and commit cadence always apply. Documentation-only verification is proportional to the approved artifact: document integrity, evidence, links, and authorized-file-scope checks are required; runtime, UI, deployment, migration, and release checks are not applicable unless the approved documents make a claim that requires one.
+- Do not alter application source, tests, CI, deployment configuration, generated artifacts, or other files outside the approved documentation scope. Return to Step 2/3 for approval if such a change becomes necessary.
 
 ## Key Rules
 
@@ -63,6 +68,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - Create separate files for each step only after receiving the relevant approval
 - ALWAYS create a feature branch before Step 4 implementation
 - Enforce Step 4 commit cadence: first Step 4 commit contains approved Step 1-3 planning docs; each completed stage has a stage-scoped commit that includes the Step 4 summary update
+- Treat documentation-only work as a Step 4 implementation only when its allowed documentation file scope was approved in Steps 2 and 3; use applicable verification and record non-applicable runtime checks in the summary
 - Prefer shared components/API contracts first; reuse or extend instead of forking markup, CSS, or payloads
 - Flag scope creep early and bounce back to planning steps rather than improvising mid-implementation
 - A feature is a releasable vertical slice: normal entry, end-to-end outcome, and required recovery. Component-only work is internal maintenance; split larger stories vertically.

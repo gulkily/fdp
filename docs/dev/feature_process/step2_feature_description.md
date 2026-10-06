@@ -14,7 +14,10 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Problem: 1–2 sentences
 - User stories: bullet list in the format “As [role], I want [goal] so that [benefit]”
 - Core requirements: 3–5 bullets capturing non-negotiable behaviors
-- Completion boundary: normal entry, end-to-end outcome, needed recovery, release condition
+- Delivery scope:
+  - Work type: application change or documentation-only
+  - For documentation-only work: allowed documentation files or directories, intended audience/outcome, and an explicit statement that application/runtime changes are not permitted
+- Completion boundary: for application work, normal entry, end-to-end outcome, needed recovery, and release condition; for documentation-only work, document completion, intended audience outcome, correction/recovery path, and handoff condition
 - Risks (2–4): impact, earliest validation, mitigation before Step 3
 - Shared component inventory: enumerate every existing UI/API surface that already renders the data; specify whether the feature reuses/extends the canonical component or needs a new one (with rationale)
 - Simple user flow: numbered steps
@@ -24,6 +27,7 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Avoid implementation details, code, database schema, UI mockups, or verbose descriptions
 - Surface material risks; do not bury them in other sections
 - A feature is a normal-flow vertical slice, not a component, API, cache, migration, or hidden route; otherwise call it internal maintenance
+- Documentation-only scope is valid when the deliverable itself is the outcome. It must name the allowed file scope; do not use it to make application, CI, deployment, or generated-artifact changes without returning to Step 2 for approval.
 - Keep the doc lightweight enough to consume at a glance
 
 ## Next
