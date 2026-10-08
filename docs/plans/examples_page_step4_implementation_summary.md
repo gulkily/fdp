@@ -10,3 +10,15 @@
   - Documentation-only scope check — only `examples/` and the Step 4 summary changed; runtime, UI, deployment, migration, and release checks are not applicable.
 - Notes:
   - The source inventory intentionally excludes private local paths, credentials, and environment-specific URLs.
+
+## Stage 2 - Publish the featured case and hub
+- Changes:
+  - Added the examples hub with Private Window Lobby Fallback as the concise featured cycle.
+  - Added the featured case's decision trace, recovery-boundary diagram, verification results, and audit links.
+- Verification:
+  - Compared the featured case's decision, absent-key-only fallback, visible-error boundary, two stages, and eight-test result with its v3 Step 1–4 record.
+  - Checked the hub → featured case → source-evidence relative links and the Mermaid diagram structure.
+  - `git diff --check` — passed.
+  - Documentation-only scope check — only `examples/` and the Step 4 summary changed; runtime, UI, deployment, migration, and release checks are not applicable.
+- Notes:
+  - The hub is a complete first-reader path now; deeper cases will be added in later approved stages.
