@@ -37,6 +37,10 @@ git subtree pull --prefix=docs/fdp fdp main --squash
 
 This keeps each project self-contained (no submodule workflow) while still letting you pull upstream FDP updates.
 
+## Examples
+
+See [FDP Examples](./examples/) for three completed v3 feature cycles: a concise security-and-recovery case, a medium-complexity operational command, and a recovery-oriented offline-reading deep dive. Each example links to its Step 1–4 source artifacts and stage commits.
+
 ## How to run the chain with your AI pair
 1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of FEATURE_DEVELOPMENT_PROCESS.md.` Make the story explicit so the assistant starts from the user’s perspective.
 2. Let the assistant draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.

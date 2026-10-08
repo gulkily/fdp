@@ -46,3 +46,15 @@
   - Documentation-only scope check — only `examples/` and the Step 4 summary changed; runtime, UI, deployment, migration, and release checks are not applicable.
 - Notes:
   - The case states that approved-members-only deployments intentionally do not make public offline snapshots available.
+
+## Stage 5 - Link and validate the collection
+- Changes:
+  - Linked the examples hub from the README as FDP's canonical entry point for completed feature cycles.
+  - Completed final document-integrity, evidence, and allowed-file-scope checks.
+- Verification:
+  - `git diff --check` — passed.
+  - Confirmed README → hub → each case → source-evidence local navigation; confirmed all referenced v3 Step 1–4 source files and recorded stage commits exist in the local source repository.
+  - Confirmed the feature-branch commits are one planning commit plus one stage-scoped commit for each of the five approved stages.
+  - Documentation-only scope check — changed files are limited to `README.md`, `examples/`, and the approved plan artifacts; runtime, UI, deployment, migration, and release checks are not applicable.
+- Notes:
+  - The public evidence links point to the source repository's stable `main` paths and commit IDs; changes to those remote resources should be corrected in the examples rather than silently ignored.
