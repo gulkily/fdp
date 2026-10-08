@@ -34,3 +34,15 @@
   - Documentation-only scope check — only `examples/` and the Step 4 summary changed; runtime, UI, deployment, migration, and release checks are not applicable.
 - Notes:
   - The case deliberately reports the source cycle's known unrelated full-suite failures instead of presenting it as an all-green run.
+
+## Stage 4 - Publish the recovery-oriented deep dive
+- Changes:
+  - Added the Offline Reading Health Check case with its route decision, public-data boundary, recovery path, verification record, and known unrelated failures.
+  - Linked the deep-dive case from the examples hub.
+- Verification:
+  - Compared the case's five stages, public-only boundary, route and cache behavior, focused and broader test results, and isolated-browser check with its v3 Step 1–4 record.
+  - Checked the hub → case → source-evidence relative links and the Mermaid diagram structure.
+  - `git diff --check` — passed.
+  - Documentation-only scope check — only `examples/` and the Step 4 summary changed; runtime, UI, deployment, migration, and release checks are not applicable.
+- Notes:
+  - The case states that approved-members-only deployments intentionally do not make public offline snapshots available.

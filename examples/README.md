@@ -24,3 +24,7 @@ The complete source-artifact and commit record for this and the forthcoming deep
 ### [v3 Status Command](./v3-status-command.md)
 
 A medium-complexity operational feature: it centralizes a read-only status view by reusing existing health semantics, while making its manual-rebuild limitation explicit.
+
+### [Offline Reading Health Check](./offline-reading-health-check.md)
+
+A deep-dive user-facing feature: it separates readiness diagnostics from offline reading, preserves a public-data boundary, and verifies recovery from preparation through disconnection.
