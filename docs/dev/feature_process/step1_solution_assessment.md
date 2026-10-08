@@ -14,7 +14,7 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 - `## Original Query` first: preserve the request except grammar, spelling, capitalization, punctuation, and formatting fixes; do not summarize or omit anything
 - When the query alone would leave the requested outcome unclear, follow it with `## Understood Intent`: a brief, clearly labeled statement of the inferred goal and relevant context. Do not invent scope or replace the original query; omit this section when it adds no useful clarification.
 - Problem statement (1 sentence)
-- ≥2 solution options tagged sequentially (Option A/B/C/etc.) with pros/cons listed as bullets
+- ≥2 solution options tagged sequentially (Option A/B/C/etc.). Start each option with one concise standalone paragraph explaining the approach and how it addresses the problem, then list pros/cons as bullets.
 - Recommendation, including vertical-slice viability
 
 ## Guardrails
