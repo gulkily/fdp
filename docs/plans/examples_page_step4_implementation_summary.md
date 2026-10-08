@@ -22,3 +22,15 @@
   - Documentation-only scope check — only `examples/` and the Step 4 summary changed; runtime, UI, deployment, migration, and release checks are not applicable.
 - Notes:
   - The hub is a complete first-reader path now; deeper cases will be added in later approved stages.
+
+## Stage 3 - Publish the operational case study
+- Changes:
+  - Added the v3 Status Command case with its decision, shared-status reuse boundary, staged delivery, verification, and limitation.
+  - Linked the new case from the examples hub.
+- Verification:
+  - Compared the case's read-only contract, deferred lifecycle work, held-lock limitation, three stages, and reported test results with its v3 Step 1–4 record.
+  - Checked the hub → case → source-evidence relative links.
+  - `git diff --check` — passed.
+  - Documentation-only scope check — only `examples/` and the Step 4 summary changed; runtime, UI, deployment, migration, and release checks are not applicable.
+- Notes:
+  - The case deliberately reports the source cycle's known unrelated full-suite failures instead of presenting it as an all-green run.

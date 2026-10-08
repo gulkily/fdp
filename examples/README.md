@@ -18,3 +18,9 @@ A private-window visitor without a saved browser key reached an error instead of
 ## Evidence
 
 The complete source-artifact and commit record for this and the forthcoming deeper examples is in [Source Evidence](./SOURCES.md).
+
+## More Examples
+
+### [v3 Status Command](./v3-status-command.md)
+
+A medium-complexity operational feature: it centralizes a read-only status view by reusing existing health semantics, while making its manual-rebuild limitation explicit.
