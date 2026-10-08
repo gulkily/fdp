@@ -5,7 +5,7 @@ These public case studies summarize completed FDP cycles from [gulkily/v3](https
 ## Private Window Lobby Fallback
 
 - Artifacts: [Step 1](https://github.com/gulkily/v3/blob/main/docs/plans/private_window_lobby_fallback/private_window_lobby_fallback_step1_solution_assessment.md) · [Step 2](https://github.com/gulkily/v3/blob/main/docs/plans/private_window_lobby_fallback/private_window_lobby_fallback_step2_feature_description.md) · [Step 3](https://github.com/gulkily/v3/blob/main/docs/plans/private_window_lobby_fallback/private_window_lobby_fallback_step3_development_plan.md) · [Step 4](https://github.com/gulkily/v3/blob/main/docs/plans/private_window_lobby_fallback/private_window_lobby_fallback_step4_implementation_summary.md)
-- Implementation evidence: [Stage 1](https://github.com/gulkily/v3/commit/e07c5fd3e2dd4692e60bff25436c2762bbf6290d) · [Stage 2](https://github.com/gulkily/v3/commit/e0455270c38236c9e3a0c0298548b29bedef8170)
+- Implementation evidence: [planning](https://github.com/gulkily/v3/commit/dc0c4395b586b487ec61d77b1bac38db08d893cf) · [Stage 1](https://github.com/gulkily/v3/commit/e07c5fd3e2dd4692e60bff25436c2762bbf6290d) · [Stage 2](https://github.com/gulkily/v3/commit/e0455270c38236c9e3a0c0298548b29bedef8170)
 - Public-summary boundary: retain the missing-key, safe-return, visible-authentication-failure, and Lobby-only access behavior; omit environment-specific route examples beyond the artifact record.
 
 ## v3 Status Command

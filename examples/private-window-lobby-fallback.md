@@ -33,5 +33,6 @@ This is deliberately not a blanket unauthenticated redirect. Only an absent usab
 
 ## Audit Trail
 
+- Use the [artifact trail](./private-window-lobby-fallback-artifact-trail.md) to replay the cycle from its recorded request, prompts, plans, and stage commits.
 - Read the original [Step 1–4 artifacts and stage commits](./SOURCES.md#private-window-lobby-fallback).
 - The source cycle completed in [Stage 1](https://github.com/gulkily/v3/commit/e07c5fd3e2dd4692e60bff25436c2762bbf6290d) and [Stage 2](https://github.com/gulkily/v3/commit/e0455270c38236c9e3a0c0298548b29bedef8170).

@@ -8,6 +8,8 @@ These are completed feature cycles from [v3](https://github.com/gulkily/v3), ret
 
 A private-window visitor without a saved browser key reached an error instead of the one permitted entry surface. The cycle chose a narrow recovery redirect, protected authentication failures from being mistaken for missing keys, and delivered it in two verified stages.
 
+Follow its [artifact trail](./private-window-lobby-fallback-artifact-trail.md) for a reproducible prompt sequence, planning artifacts, and stage commits.
+
 | Step | What the feature cycle established |
 | --- | --- |
 | 1 — Decide | Redirect only a genuinely keyless visitor to Lobby; reject redirects that weaken saved-key recovery or duplicate the entry surface. |
