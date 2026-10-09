@@ -10,3 +10,16 @@
   - Runtime, UI, deployment, migration, and release checks are not applicable to this removal-only stage; the repository-wide user workflow is verified after Stage 2.
 - Notes:
   - Historical planning artifacts retain references to the retired interface as an audit record; the active README workflow is replaced in Stage 2.
+
+## Stage 2 - Publish the review-first Git workflow
+- Changes:
+  - Replaced the remote-script quick start with visible Git preflight and submodule-add commands.
+  - Documented explicit clone initialization, expected-submodule checks, fast-forward-only update, review, and nondestructive recovery paths.
+  - Made README the sole supported installation and update interface.
+- Verification:
+  - `python scripts/check-markdown-links.py` passed: 42 Markdown files checked.
+  - A disposable Git fixture ran the documented clean-host checks and `git submodule add --branch master https://github.com/gulkily/fdp.git docs/fdp`; it verified the configured URL/branch, initialized checkout, and staged changes limited to `.gitmodules` and `docs/fdp`.
+  - `git diff --check` passed; the active repository contains no `curl | bash`, `fdp install`, or `fdp sync` reference.
+  - Runtime, UI, deployment, migration, and release checks are not applicable; this stage changes the repository's published Git workflow.
+- Notes:
+  - Fixture verification used a uniquely named temporary directory and did not modify this repository.

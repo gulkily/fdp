@@ -14,13 +14,34 @@ If you frequently see Claude/Codex derail because requirements evolve mid-stream
 
 ## Quick start
 
-The recommended installation is a Git submodule at `docs/fdp`. It keeps FDP’s upstream history explicit while letting each consuming repository review and commit its chosen FDP version.
+The supported installation is a Git submodule at `docs/fdp`. FDP deliberately has no bootstrap script: before FDP is installed, use the visible Git commands below rather than executing downloaded code in the consuming repository.
+
+From the **root of a clean, non-bare Git working tree**, run these read-only checks first. Stop if a check does not have the stated result; do not clean, reset, stash, remove, or overwrite anything to make it pass.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/fdp | bash -s -- install
-git add .gitmodules docs/fdp
-git commit -m "docs: add FDP"
+# Both commands must print the same absolute path.
+git rev-parse --show-toplevel
+pwd -P
+
+# Must print "false".
+git rev-parse --is-bare-repository
+
+# Must print nothing. This includes staged, unstaged, and untracked files.
+git status --porcelain
+
+# Must exit successfully; docs/fdp must not exist, including as a symlink.
+test ! -e docs/fdp && test ! -L docs/fdp
 ```
+
+When all checks pass, add FDP. This command writes `.gitmodules`, stages the new submodule entry, and creates `docs/fdp`; it does not create a commit.
+
+```bash
+git submodule add --branch master https://github.com/gulkily/fdp.git docs/fdp
+git status --short
+git diff --cached -- .gitmodules docs/fdp
+```
+
+Inspect the displayed changes, then commit them through your normal repository workflow. Do not continue if the output shows files beyond `.gitmodules` and `docs/fdp`.
 
 In your project, create `docs/plans/` if it does not exist. Then send your supported assistant this first prompt (adapt the story, but keep the explicit step request):
 
@@ -44,31 +65,34 @@ The first run should take only a few minutes: read the four-step overview, send 
   - `step3_development_plan.md`, `step4_implementation.md` (compatibility entrypoints)
 - `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update a local README for navigation.
 
-## Reusing across projects (recommended)
-Use FDP as a submodule so each project keeps an explicit, reviewable FDP version.
+## Reusing across projects
 
-One-time in a consuming project:
-```bash
-curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/fdp | bash -s -- install
-git add .gitmodules docs/fdp
-git commit -m "docs: add FDP"
-```
-
-When cloning the consuming project later, initialize FDP with either command:
+When cloning a project that already includes FDP, initialize its submodules with either command:
 ```bash
 git clone --recurse-submodules <project-repository-url>
 git submodule update --init --recursive
 ```
 
-To synchronize FDP with the submodule's configured `origin`, then review and commit the pointer update:
+To update FDP, start from the consuming repository root only after the same clean-host check above passes. The submodule must also be initialized, clean, on `master`, and configured for the expected origin and branch. Each command below is either an inspection or operates only inside `docs/fdp`; the final merge refuses non-fast-forward history.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/fdp | bash -s -- sync
-git add docs/fdp
-git commit -m "docs: sync FDP"
+# Every inspection must match its comment.
+git status --porcelain                         # no output
+git -C docs/fdp status --porcelain             # no output
+git -C docs/fdp branch --show-current          # master
+git config --file .gitmodules --get submodule.docs/fdp.url       # https://github.com/gulkily/fdp.git
+git config --file .gitmodules --get submodule.docs/fdp.branch    # master
+git -C docs/fdp remote get-url origin          # https://github.com/gulkily/fdp.git
+
+git -C docs/fdp fetch origin master
+git -C docs/fdp merge --ff-only FETCH_HEAD
+git diff --submodule=log -- docs/fdp
+git status --short
 ```
 
-The installer refuses a conflicting `docs/fdp` path, and sync refuses an uninitialized, dirty, incompatible, or already-modified FDP submodule. Resolve the reported condition before retrying; neither command creates a consuming-repository commit.
+Review the resulting `docs/fdp` pointer change, then commit it through your normal repository workflow. Neither workflow creates a consuming-repository commit.
+
+If `docs/fdp` is uninitialized, run `git submodule update --init -- docs/fdp` and restart the checks. If a path is occupied, a repository is dirty, the checkout is detached, configuration differs, or the fast-forward merge refuses to proceed, stop and inspect that state; do not use `reset`, `clean`, `stash`, or deletion commands as a recovery shortcut.
 
 ## Examples
 
