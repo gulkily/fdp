@@ -10,6 +10,8 @@ A private-window visitor without a saved browser key reached an error instead of
 
 Follow its [artifact trail](./private-window-lobby-fallback-artifact-trail.md) for a reproducible prompt sequence, planning artifacts, and stage commits.
 
+The accompanying [direct-prompt comparison](./private-window-lobby-fallback-comparison.md) makes the review controls visible without claiming an unmeasured model benchmark.
+
 | Step | What the feature cycle established |
 | --- | --- |
 | 1 — Decide | Redirect only a genuinely keyless visitor to Lobby; reject redirects that weaken saved-key recovery or duplicate the entry surface. |
