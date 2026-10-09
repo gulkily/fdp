@@ -13,3 +13,17 @@
   - Deployment, UI, database, and migration checks are not applicable to this local Bash command.
 - Notes:
   - Upstream validation established that `https://github.com/gulkily/fdp.git` publishes `master`, not `main`; the approved Step 2–3 artifacts were corrected and committed before this stage.
+
+## Stage 2 - Safe FDP submodule synchronization
+
+- Changes:
+  - Added `scripts/fdp-submodule.sh sync` to validate the registered FDP submodule, canonical configuration, initialized checkout, origin remote, clean state, and `master` checkout.
+  - Fetches the configured `origin` and fast-forwards only; it never commits the resulting host-repository pointer update.
+  - Added recovery messages for missing, uninitialized, dirty, incompatible, detached, or already-modified submodule states.
+- Verification:
+  - Ran `bash -n scripts/fdp-submodule.sh` successfully.
+  - In a disposable host and local bare-upstream fixture, published a new upstream commit, synchronized it, verified the new file in `docs/fdp`, and verified the host reports its uncommitted submodule-pointer change.
+  - Verified dirty and missing-submodule cases fail before synchronization.
+  - Deployment, UI, database, and migration checks are not applicable to this local Bash command.
+- Notes:
+  - The sync fixture changed the submodule checkout’s `origin` to a local bare repository while retaining the canonical FDP entry in `.gitmodules`, confirming synchronization uses the configured origin rather than a hard-coded fetch URL.
