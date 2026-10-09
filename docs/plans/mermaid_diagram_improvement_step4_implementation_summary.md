@@ -43,7 +43,18 @@
   - A node-level return edge was tried; it flipped the rows (Step 4 above Planning) or stretched the diagram into a tall column, so it was rejected.
   - `git diff --check` passed; changed files within scope.
   - Branch pushed to origin with user approval; the user viewed the earlier single-row version on GitHub and approved its look and coloring.
-  - GitHub light/dark check of the two-row version: pending user confirmation.
+  - GitHub check of the two-row version: the user reviewed it on GitHub and accepted it ("This is acceptable"). Light/dark legibility was not separately itemized by the user.
   - Runtime, UI, deployment, migration, and release checks: not applicable.
 - Notes:
   - Trade-off: the dotted return arrow to the Step 2 node was dropped in favor of the two-row layout; the stop node's text carries the routing.
+
+## Final verification
+- Changes: none beyond Stages 1–3.
+- Verification:
+  - All three stages completed with stage-scoped commits that include their summary updates; the first Step 4 commit is the planning-doc commit.
+  - Commit count on the branch: 1 planning + 3 stage commits, meeting the minimum of 1 + 3, plus this final summary commit.
+  - Document integrity, `git diff --check`, link check, and file-scope checks recorded per stage; only `README.md` and `docs/plans/` files changed.
+  - Contract met: both diagrams are readable in two rows, decision edges are distinct, and the process meaning is unchanged.
+  - Runtime, UI, deployment, migration, and release checks: not applicable (documentation-only).
+- Notes:
+  - Known trade-off: no return arrow to the Step 2 node in the second diagram (see Stage 3).
