@@ -23,3 +23,15 @@
   - Runtime, UI, deployment, migration, and release checks are not applicable; this stage changes the repository's published Git workflow.
 - Notes:
   - Fixture verification used a uniquely named temporary directory and did not modify this repository.
+
+## Stage 3 - Verify the Git workflow in isolated fixtures
+- Changes:
+  - Added `scripts/check-fdp-git-workflow.sh`, an offline disposable-fixture check for add, clone initialization, fast-forward update, and dirty-submodule detection.
+  - The check creates its own local upstream and validates that the host install changes are limited to `.gitmodules` and `docs/fdp`.
+- Verification:
+  - `bash scripts/check-fdp-git-workflow.sh` passed, including clone initialization, a `master` fast-forward, and confirmation that a dirty submodule leaves the tracked host pointer unchanged.
+  - `git diff --check` passed.
+  - `python scripts/check-markdown-links.py` passed: 42 Markdown files checked.
+  - Runtime, UI, deployment, migration, and release checks are not applicable; this stage verifies local Git workflow behavior only.
+- Notes:
+  - The fixture forces its local upstream onto `master` so it remains valid regardless of the machine's Git default branch.
