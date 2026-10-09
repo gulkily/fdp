@@ -14,11 +14,12 @@ If you frequently see Claude/Codex derail because requirements evolve mid-stream
 
 ## Quick start
 
-The recommended installation is a Git subtree: it keeps a copy of the instructions in the consuming repository while allowing deliberate upstream updates.
+The recommended installation is a Git submodule at `docs/fdp`. It keeps FDP’s upstream history explicit while letting each consuming repository review and commit its chosen FDP version.
 
 ```bash
-git remote add fdp https://github.com/gulkily/fdp.git
-git subtree add --prefix=docs/fdp fdp main --squash
+curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp-submodule.sh | bash -s -- install
+git add .gitmodules docs/fdp
+git commit -m "docs: add FDP"
 ```
 
 In your project, create `docs/plans/` if it does not exist. Then send your supported assistant this first prompt (adapt the story, but keep the explicit step request):
@@ -44,21 +45,30 @@ The first run should take only a few minutes: read the four-step overview, send 
 - `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update a local README for navigation.
 
 ## Reusing across projects (recommended)
-Use this repo as the single source of truth and sync it into each project with `git subtree`.
+Use FDP as a submodule so each project keeps an explicit, reviewable FDP version.
 
 One-time in a consuming project:
 ```bash
-git remote add fdp <fdp-repo-url>
-git subtree add --prefix=docs/fdp fdp main --squash
+curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp-submodule.sh | bash -s -- install
+git add .gitmodules docs/fdp
+git commit -m "docs: add FDP"
 ```
 
-Update later:
+When cloning the consuming project later, initialize FDP with either command:
 ```bash
-git fetch fdp
-git subtree pull --prefix=docs/fdp fdp main --squash
+git clone --recurse-submodules <project-repository-url>
+git submodule update --init --recursive
 ```
 
-This keeps each project self-contained (no submodule workflow) while still letting you pull upstream FDP updates.
+To synchronize FDP with the submodule's configured `origin`, then review and commit the pointer update:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp-submodule.sh | bash -s -- sync
+git add docs/fdp
+git commit -m "docs: sync FDP"
+```
+
+The installer refuses a conflicting `docs/fdp` path, and sync refuses an uninitialized, dirty, incompatible, or already-modified FDP submodule. Resolve the reported condition before retrying; neither command creates a consuming-repository commit.
 
 ## Examples
 

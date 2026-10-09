@@ -27,3 +27,18 @@
   - Deployment, UI, database, and migration checks are not applicable to this local Bash command.
 - Notes:
   - The sync fixture changed the submodule checkout’s `origin` to a local bare repository while retaining the canonical FDP entry in `.gitmodules`, confirming synchronization uses the configured origin rather than a hard-coded fetch URL.
+
+## Stage 3 - Publish the submodule workflow
+
+- Changes:
+  - Replaced README subtree installation and update guidance with the supported submodule installer workflow.
+  - Documented downstream clone initialization, synchronization from configured origin, review, and explicit maintainer commits.
+  - Documented that the commands refuse unsafe submodule states and do not create host-repository commits.
+- Verification:
+  - Ran `bash -n scripts/fdp-submodule.sh` successfully.
+  - In a disposable repository, exercised the README’s piped installer and sync command form using the local script artifact, committed the submodule, and cloned it with `--recurse-submodules`; the cloned FDP instructions were present.
+  - Ran `node scripts/check-markdown-links.mjs`: 39 Markdown files checked with valid local links.
+  - Ran `git diff --check` successfully.
+  - Deployment, UI, database, and migration checks are not applicable to this documentation and local Bash-command release.
+- Notes:
+  - The public raw-GitHub command targets `master`, matching the verified upstream default branch and becoming fetchable at that URL when this change is merged.
