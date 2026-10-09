@@ -148,19 +148,29 @@ flowchart LR
 
 The plan artifacts live in the consuming repository’s `docs/plans/`; the FDP instruction files can remain under `docs/fdp/`. Approval gates stop forward progress. The feature branch begins only after Step 3, with a planning-doc commit; every Step 4 stage then gets its own auditable commit.
 
+**Returning to planning: a scope change during Step 4 sends work back to Step 2.**
+
 ```mermaid
-flowchart TD
-    N[Normal feature request] --> P[Steps 1–3: describe and plan]
-    P --> A{Approved Step 3?}
-    A -->|No| P
-    A -->|Yes| I[Step 4: implement planned stage]
-    I --> Q{New requirement,\nrisk, or scope change?}
-    Q -->|No| V[Verify, update summary,\ncommit stage]
-    V --> D{More stages?}
-    D -->|Yes| I
-    D -->|No| H[Handoff]
-    Q -->|Yes| R[Stop the affected work\nand return to Step 2]
-    R --> P
+flowchart LR
+    N([Feature request]) --> S2["Step 2:<br/>Feature description"]
+    S2 --> S3["Step 3:<br/>Development plan"]
+    S3 --> A{"Approved<br/>Step 3?"}
+    A -.->|Revise| S3
+    A -->|Approved Step 3| I["Step 4:<br/>implement stage"]
+    I --> Q{"New requirement,<br/>risk, or scope?"}
+    Q -->|No change| V["Verify, update summary,<br/>commit stage"]
+    V --> D{"More<br/>stages?"}
+    D -->|Next stage| I
+    D -->|Done| H([Handoff])
+    Q -.->|Scope changed| R["Stop affected work;<br/>return to Step 2"]
+    R -.-> S2
+
+    classDef gate fill:#bf870033,stroke:#bf8700,stroke-width:2px
+    classDef commit fill:#1a7f3733,stroke:#1a7f37,stroke-width:2px
+    classDef stop fill:#cf222e33,stroke:#cf222e,stroke-width:2px
+    class A,Q,D gate
+    class V commit
+    class R stop
 ```
 
 Returning to planning is a feature, not a failure: a new requirement or unresolved risk changes the approved boundary, so it must be reviewed before implementation resumes.
