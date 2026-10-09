@@ -17,7 +17,7 @@ If you frequently see Claude/Codex derail because requirements evolve mid-stream
 The recommended installation is a Git submodule at `docs/fdp`. It keeps FDP’s upstream history explicit while letting each consuming repository review and commit its chosen FDP version.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp-submodule.sh | bash -s -- install
+curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp | bash -s -- install
 git add .gitmodules docs/fdp
 git commit -m "docs: add FDP"
 ```
@@ -49,7 +49,7 @@ Use FDP as a submodule so each project keeps an explicit, reviewable FDP version
 
 One-time in a consuming project:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp-submodule.sh | bash -s -- install
+curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp | bash -s -- install
 git add .gitmodules docs/fdp
 git commit -m "docs: add FDP"
 ```
@@ -63,7 +63,7 @@ git submodule update --init --recursive
 To synchronize FDP with the submodule's configured `origin`, then review and commit the pointer update:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp-submodule.sh | bash -s -- sync
+curl -fsSL https://raw.githubusercontent.com/gulkily/fdp/master/scripts/fdp | bash -s -- sync
 git add docs/fdp
 git commit -m "docs: sync FDP"
 ```

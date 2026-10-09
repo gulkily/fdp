@@ -3,11 +3,11 @@
 ## Stage 1 - Safe FDP submodule installation
 
 - Changes:
-  - Added `scripts/fdp-submodule.sh install` to add the canonical FDP repository as `docs/fdp` on `master`.
+  - Added `scripts/fdp install` to add the canonical FDP repository as `docs/fdp` on `master`.
   - Validated the caller’s Git working tree and rejected an occupied or already-registered target path before mutation.
   - Reported that `.gitmodules` and the submodule pointer require maintainer review and commit.
 - Verification:
-  - Ran `bash -n scripts/fdp-submodule.sh` successfully.
+  - Ran `bash -n scripts/fdp` successfully.
   - In a disposable repository, ran install from a nested directory and verified the registered path, URL, branch, and working submodule checkout.
   - Verified an occupied `docs/fdp` path and a non-Git directory fail without changing the fixture’s existing content.
   - Deployment, UI, database, and migration checks are not applicable to this local Bash command.
@@ -17,11 +17,11 @@
 ## Stage 2 - Safe FDP submodule synchronization
 
 - Changes:
-  - Added `scripts/fdp-submodule.sh sync` to validate the registered FDP submodule, canonical configuration, initialized checkout, origin remote, clean state, and `master` checkout.
+  - Added `scripts/fdp sync` to validate the registered FDP submodule, canonical configuration, initialized checkout, origin remote, clean state, and `master` checkout.
   - Fetches the configured `origin` and fast-forwards only; it never commits the resulting host-repository pointer update.
   - Added recovery messages for missing, uninitialized, dirty, incompatible, detached, or already-modified submodule states.
 - Verification:
-  - Ran `bash -n scripts/fdp-submodule.sh` successfully.
+  - Ran `bash -n scripts/fdp` successfully.
   - In a disposable host and local bare-upstream fixture, published a new upstream commit, synchronized it, verified the new file in `docs/fdp`, and verified the host reports its uncommitted submodule-pointer change.
   - Verified dirty and missing-submodule cases fail before synchronization.
   - Deployment, UI, database, and migration checks are not applicable to this local Bash command.
@@ -35,10 +35,23 @@
   - Documented downstream clone initialization, synchronization from configured origin, review, and explicit maintainer commits.
   - Documented that the commands refuse unsafe submodule states and do not create host-repository commits.
 - Verification:
-  - Ran `bash -n scripts/fdp-submodule.sh` successfully.
+  - Ran `bash -n scripts/fdp` successfully.
   - In a disposable repository, exercised the README’s piped installer and sync command form using the local script artifact, committed the submodule, and cloned it with `--recurse-submodules`; the cloned FDP instructions were present.
   - Ran `node scripts/check-markdown-links.mjs`: 39 Markdown files checked with valid local links.
   - Ran `git diff --check` successfully.
   - Deployment, UI, database, and migration checks are not applicable to this documentation and local Bash-command release.
 - Notes:
   - The public raw-GitHub command targets `master`, matching the verified upstream default branch and becoming fetchable at that URL when this change is merged.
+
+## Stage 4 - Rename the FDP command
+
+- Changes:
+  - Renamed the executable from `scripts/fdp-submodule.sh` to the concise `scripts/fdp` command.
+  - Updated its usage text, README commands, and planning references to use `fdp`.
+- Verification:
+  - Ran `bash -n scripts/fdp` and checked `scripts/fdp --help` for the new command name.
+  - In a disposable repository, exercised the piped `scripts/fdp` install and sync command forms and verified the installed FDP instructions.
+  - Ran `node scripts/check-markdown-links.mjs`: 38 Markdown files checked with valid local links.
+  - Ran `git diff --check` successfully.
+- Notes:
+  - This is a command-path and documentation rename only; install and synchronization behavior are unchanged.

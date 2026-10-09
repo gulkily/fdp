@@ -13,7 +13,7 @@ die() {
 
 usage() {
   cat <<'EOF'
-Usage: fdp-submodule.sh <install|sync>
+Usage: fdp <install|sync>
 
 Install FDP as the docs/fdp submodule in the current Git repository.
 Synchronize the installed FDP submodule from its configured origin.

@@ -19,25 +19,25 @@
 
 - Goal: deliver a safe install command for the FDP submodule.
 - Dependencies: approved Step 2 contract; Git and Bash available to the caller.
-- Expected changes: add the repository-owned Bash command at `scripts/fdp-submodule.sh`; expose `scripts/fdp-submodule.sh install`; locate the current repository, preflight `docs/fdp`, and register `https://github.com/gulkily/fdp.git` on `master` without overwriting conflicts.
+- Expected changes: add the repository-owned Bash command at `scripts/fdp`; expose `scripts/fdp install`; locate the current repository, preflight `docs/fdp`, and register `https://github.com/gulkily/fdp.git` on `master` without overwriting conflicts.
 - Verification approach: exercise install from a nested directory in a disposable Git repository; verify `.gitmodules`, the `docs/fdp` submodule registration, and conflict/non-Git failures leave unrelated fixture files unchanged.
 - Risks or open questions:
   - Impact: a bad path check could create or replace consumer content.
   - Early warning / validation: fixture with ordinary content at `docs/fdp`.
   - Mitigation: fail before any Git mutation and print the recovery action.
-- Canonical components/API contracts touched: new CLI contract `scripts/fdp-submodule.sh install`; canonical public installation path `docs/fdp`.
+- Canonical components/API contracts touched: new CLI contract `scripts/fdp install`; canonical public installation path `docs/fdp`.
 
 ## Stage 2
 
 - Goal: deliver a safe sync command for the installed FDP submodule.
 - Dependencies: Stage 1; a valid `docs/fdp` submodule with configured `origin`.
-- Expected changes: extend the command with `scripts/fdp-submodule.sh sync`; preflight submodule identity, origin, checkout branch, and clean state; fetch and fast-forward the configured FDP submodule while leaving its host pointer change uncommitted.
+- Expected changes: extend the command with `scripts/fdp sync`; preflight submodule identity, origin, checkout branch, and clean state; fetch and fast-forward the configured FDP submodule while leaving its host pointer change uncommitted.
 - Verification approach: use a disposable host plus local bare upstream fixture with a later commit; verify the submodule advances, the host shows only the pointer change, and missing/dirty/incompatible submodule cases make no pointer change.
 - Risks or open questions:
   - Impact: local work or an unintended revision could be lost.
   - Early warning / validation: dirty and detached/incompatible fixture states.
   - Mitigation: reject unsupported states before fetching or advancing the checkout.
-- Canonical components/API contracts touched: CLI contract `scripts/fdp-submodule.sh sync`; Git submodule `origin` and configured-branch contract.
+- Canonical components/API contracts touched: CLI contract `scripts/fdp sync`; Git submodule `origin` and configured-branch contract.
 
 ## Stage 3
 
@@ -49,4 +49,4 @@
   - Impact: consumers follow obsolete subtree instructions.
   - Early warning / validation: search README for contradictory install/update commands.
   - Mitigation: make the submodule workflow the single recommended path.
-- Canonical components/API contracts touched: `README.md` canonical installation documentation; `scripts/fdp-submodule.sh` CLI contract.
+- Canonical components/API contracts touched: `README.md` canonical installation documentation; `scripts/fdp` CLI contract.
