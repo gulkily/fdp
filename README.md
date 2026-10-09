@@ -110,25 +110,40 @@ The strict per-step files mean you always paste a small, targeted instruction bl
 
 ## Workflow at a glance
 
+**Approval chain: each planning step needs explicit approval before the next begins.**
+
 ```mermaid
-flowchart TD
-    A[Feature request] --> B{Need to compare\nviable approaches?}
-    B -->|Yes| S1[Step 1\nSolution assessment\ncreate plan artifact]
-    B -->|No| S2[Step 2\nFeature description\ncreate plan artifact]
-    S1 --> G1{Approved Step 1?}
-    G1 -->|Revise| S1
-    G1 -->|Yes| S2
-    S2 --> G2{Approved Step 2?}
-    G2 -->|Revise| S2
-    G2 -->|Yes| S3[Step 3\nDevelopment plan\ncreate plan artifact]
-    S3 --> G3{Approved Step 3?}
-    G3 -->|Revise| S3
-    G3 -->|Yes| BR[Create feature branch\nCommit approved Steps 1–3]
-    BR --> S4[Step 4 Stage N\nImplement + verify + update summary]
-    S4 --> C[Commit stage N + its\nStep 4 summary update]
-    C --> M{More approved\nstages?}
-    M -->|Yes| S4
-    M -->|No| F[Final verification\nand handoff]
+flowchart LR
+    subgraph PLAN ["Planning (uncommitted, docs/plans/)"]
+        A([Feature request])
+        S1["Step 1 (optional):<br/>Solution assessment"]
+        S2["Step 2:<br/>Feature description"]
+        S3["Step 3:<br/>Development plan"]
+    end
+    subgraph IMPL ["Implementation (feature branch)"]
+        BR["Create branch +<br/>commit Steps 1–3"]
+        S4["Stage N: implement, verify,<br/>commit with summary update"]
+        M{"More<br/>stages?"}
+        F["Final verification<br/>and handoff"]
+    end
+    A -.->|Complex| S1
+    A -->|Simple| S2
+    S1 -->|Approved Step 1| S2
+    S1 -.->|Revise| S1
+    S2 -->|Approved Step 2| S3
+    S2 -.->|Revise| S2
+    S3 -->|Approved Step 3| BR
+    S3 -.->|Revise| S3
+    BR --> S4
+    S4 --> M
+    M -->|Next stage| S4
+    M -->|Done| F
+
+    classDef gate fill:#bf870033,stroke:#bf8700,stroke-width:2px
+    classDef commit fill:#1a7f3733,stroke:#1a7f37,stroke-width:2px
+    classDef stop fill:#cf222e33,stroke:#cf222e,stroke-width:2px
+    class S1,S2,S3 gate
+    class BR,S4 commit
 ```
 
 The plan artifacts live in the consuming repository’s `docs/plans/`; the FDP instruction files can remain under `docs/fdp/`. Approval gates stop forward progress. The feature branch begins only after Step 3, with a planning-doc commit; every Step 4 stage then gets its own auditable commit.
