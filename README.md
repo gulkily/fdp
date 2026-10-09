@@ -1,6 +1,8 @@
 # Feature Development Process (FDP)
 
-This repo packages a lightweight but strict workflow you can hand to Claude Code, GitHub Copilot, or Codex when they keep wandering off while you try to deliver a real feature. The files here explain _exactly_ how to scope work, gather approvals, and move through implementation without blowing the context window or letting the assistant improvise.
+FDP is a file-based, approval-gated workflow for keeping AI-assisted feature work scoped, reviewable, and verified.
+
+Use it with Claude Code, GitHub Copilot, or Codex when a feature needs a decision record and deliberate review points—not just a plausible patch.
 
 ## Why use this?
 - Keeps multi-step feature work inside the model context window by splitting guidance across files.
@@ -9,6 +11,27 @@ This repo packages a lightweight but strict workflow you can hand to Claude Code
 - Limits plan bloat so every deliverable stays within a page and can be reviewed quickly.
 
 If you frequently see Claude/Codex derail because requirements evolve mid-stream, treat this repo as the “rails” that keep both you and the assistant honest.
+
+## Quick start
+
+The recommended installation is a Git subtree: it keeps a copy of the instructions in the consuming repository while allowing deliberate upstream updates.
+
+```bash
+git remote add fdp https://github.com/gulkily/fdp.git
+git subtree add --prefix=docs/fdp fdp main --squash
+```
+
+In your project, create `docs/plans/` if it does not exist. Then send your supported assistant this first prompt (adapt the story, but keep the explicit step request):
+
+> As a user, I would like to export my saved searches as CSV, please write Step 1 of `docs/fdp/FEATURE_DEVELOPMENT_PROCESS.md`.
+
+If the decision is straightforward, you may skip Step 1 and ask for Step 2 instead. Review each artifact before continuing. For example:
+
+> Approved Step 1, please continue to Step 2.
+
+After `Approved Step 3`, the assistant creates a feature branch, commits the approved planning documents first, then makes a separate commit—with the matching Step 4 summary update—for every completed stage. See the [worked example](./examples/private-window-lobby-fallback.md), [prompt fixtures](./examples/fixtures/), and [failure-mode guide](./docs/failure-modes.md).
+
+The first run should take only a few minutes: read the four-step overview, send the prompt, and inspect the resulting Step 1 artifact. Do not approve a step you have not reviewed.
 
 ## Repo layout
 - `FEATURE_DEVELOPMENT_PROCESS.md` – one-page overview of the entire chain plus key rules and warning signs.
@@ -50,6 +73,58 @@ See [FDP Examples](./examples/) for three completed v3 feature cycles: a concise
 6. During Step 4, make at least one stage-scoped commit per completed stage, and include that stage's Step 4 summary update in the same commit.
 
 The strict per-step files mean you always paste a small, targeted instruction block into the chat; no more scrolling through a 4k-token mega-brief.
+
+## Workflow at a glance
+
+```mermaid
+flowchart TD
+    A[Feature request] --> B{Need to compare\nviable approaches?}
+    B -->|Yes| S1[Step 1\nSolution assessment\ncreate plan artifact]
+    B -->|No| S2[Step 2\nFeature description\ncreate plan artifact]
+    S1 --> G1{Approved Step 1?}
+    G1 -->|Revise| S1
+    G1 -->|Yes| S2
+    S2 --> G2{Approved Step 2?}
+    G2 -->|Revise| S2
+    G2 -->|Yes| S3[Step 3\nDevelopment plan\ncreate plan artifact]
+    S3 --> G3{Approved Step 3?}
+    G3 -->|Revise| S3
+    G3 -->|Yes| BR[Create feature branch\nCommit approved Steps 1–3]
+    BR --> S4[Step 4 Stage N\nImplement + verify + update summary]
+    S4 --> C[Commit stage N + its\nStep 4 summary update]
+    C --> M{More approved\nstages?}
+    M -->|Yes| S4
+    M -->|No| F[Final verification\nand handoff]
+```
+
+The plan artifacts live in the consuming repository’s `docs/plans/`; the FDP instruction files can remain under `docs/fdp/`. Approval gates stop forward progress. The feature branch begins only after Step 3, with a planning-doc commit; every Step 4 stage then gets its own auditable commit.
+
+```mermaid
+flowchart TD
+    N[Normal feature request] --> P[Steps 1–3: describe and plan]
+    P --> A{Approved Step 3?}
+    A -->|No| P
+    A -->|Yes| I[Step 4: implement planned stage]
+    I --> Q{New requirement,\nrisk, or scope change?}
+    Q -->|No| V[Verify, update summary,\ncommit stage]
+    V --> D{More stages?}
+    D -->|Yes| I
+    D -->|No| H[Handoff]
+    Q -->|Yes| R[Stop the affected work\nand return to Step 2]
+    R --> P
+```
+
+Returning to planning is a feature, not a failure: a new requirement or unresolved risk changes the approved boundary, so it must be reviewed before implementation resumes.
+
+## Documentation checks
+
+Run these before sharing an FDP change. The link check validates local Markdown paths; review rendered Mermaid diagrams on GitHub after publication because GitHub owns the renderer.
+
+```bash
+node scripts/check-markdown-links.mjs
+git diff --check
+git status --short
+```
 
 ## What each step enforces
 | Step | Goal | Key outputs |
