@@ -113,14 +113,16 @@ The strict per-step files mean you always paste a small, targeted instruction bl
 **Approval chain: each planning step needs explicit approval before the next begins.**
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph PLAN ["Planning (uncommitted, docs/plans/)"]
+        direction LR
         A([Feature request])
         S1["Step 1 (optional):<br/>Solution assessment"]
         S2["Step 2:<br/>Feature description"]
         S3["Step 3:<br/>Development plan"]
     end
     subgraph IMPL ["Implementation (feature branch)"]
+        direction LR
         BR["Create branch +<br/>commit Steps 1–3"]
         S4["Stage N: implement, verify,<br/>commit with summary update"]
         M{"More<br/>stages?"}
@@ -132,13 +134,12 @@ flowchart LR
     S1 -.->|Revise| S1
     S2 -->|Approved Step 2| S3
     S2 -.->|Revise| S2
-    S3 -->|Approved Step 3| BR
+    PLAN -->|Approved Step 3| IMPL
     S3 -.->|Revise| S3
     BR --> S4
     S4 --> M
     M -->|Next stage| S4
     M -->|Done| F
-
     classDef gate fill:#bf870033,stroke:#bf8700,stroke-width:2px
     classDef commit fill:#1a7f3733,stroke:#1a7f37,stroke-width:2px
     classDef stop fill:#cf222e33,stroke:#cf222e,stroke-width:2px
@@ -151,20 +152,24 @@ The plan artifacts live in the consuming repository’s `docs/plans/`; the FDP i
 **Returning to planning: a scope change during Step 4 sends work back to Step 2.**
 
 ```mermaid
-flowchart LR
-    N([Feature request]) --> S2["Step 2:<br/>Feature description"]
-    S2 --> S3["Step 3:<br/>Development plan"]
-    S3 --> A{"Approved<br/>Step 3?"}
-    A -.->|Revise| S3
-    A -->|Approved Step 3| I["Step 4:<br/>implement stage"]
-    I --> Q{"New requirement,<br/>risk, or scope?"}
-    Q -->|No change| V["Verify, update summary,<br/>commit stage"]
-    V --> D{"More<br/>stages?"}
-    D -->|Next stage| I
-    D -->|Done| H([Handoff])
-    Q -.->|Scope changed| R["Stop affected work;<br/>return to Step 2"]
-    R -.-> S2
-
+flowchart TB
+    subgraph PLAN ["Planning (uncommitted, docs/plans/)"]
+        direction LR
+        N([Feature request]) --> S2["Step 2:<br/>Feature description"]
+        S2 --> S3["Step 3:<br/>Development plan"]
+        S3 --> A{"Approved<br/>Step 3?"}
+        A -.->|Revise| S3
+    end
+    subgraph IMPL ["Implementation (feature branch)"]
+        direction LR
+        I["Implement<br/>stage"] --> Q{"New requirement,<br/>risk, or scope?"}
+        Q -->|No change| V["Verify, update summary,<br/>commit stage"]
+        V --> D{"More<br/>stages?"}
+        D -->|Next stage| I
+        D -->|Done| H([Handoff])
+        Q -.->|Scope changed| R["Stop affected work;<br/>return to Step 2 above"]
+    end
+    PLAN -->|Approved Step 3| IMPL
     classDef gate fill:#bf870033,stroke:#bf8700,stroke-width:2px
     classDef commit fill:#1a7f3733,stroke:#1a7f37,stroke-width:2px
     classDef stop fill:#cf222e33,stroke:#cf222e,stroke-width:2px

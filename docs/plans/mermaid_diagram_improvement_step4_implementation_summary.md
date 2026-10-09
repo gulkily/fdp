@@ -31,3 +31,19 @@
 - Notes:
   - The explicit Step 2 node omits the optional Step 1; the first diagram covers that path.
   - GitHub light/dark rendering is checked in Stage 3.
+
+## Stage 3 - Two-row layout revision
+- Changes:
+  - `README.md`: after reviewing the Stage 1–2 diagrams, the user found the single-row layouts too wide and asked for two rows.
+  - Both diagrams are now `flowchart TB` with a left-to-right Planning row above a left-to-right Implementation row.
+  - Rows are joined by a subgraph-to-subgraph "Approved Step 3" edge; node-level cross-row edges made Mermaid ignore the row direction.
+  - The second diagram's return edge is now text only: the stop node reads "return to Step 2 above".
+- Verification:
+  - Local render with `@mermaid-js/mermaid-cli` 12.0.0: two rows, no crossing edges in either diagram.
+  - A node-level return edge was tried; it flipped the rows (Step 4 above Planning) or stretched the diagram into a tall column, so it was rejected.
+  - `git diff --check` passed; changed files within scope.
+  - Branch pushed to origin with user approval; the user viewed the earlier single-row version on GitHub and approved its look and coloring.
+  - GitHub light/dark check of the two-row version: pending user confirmation.
+  - Runtime, UI, deployment, migration, and release checks: not applicable.
+- Notes:
+  - Trade-off: the dotted return arrow to the Step 2 node was dropped in favor of the two-row layout; the stop node's text carries the routing.
