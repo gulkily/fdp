@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# FDP assistant shortcut: when a request references @fdp, read
+# FEATURE_DEVELOPMENT_PROCESS.md and follow its approval-gated step instructions.
+# Example: "Please write Step 1 of @fdp."
+
 set -euo pipefail
 
 readonly FDP_PATH="docs/fdp"
