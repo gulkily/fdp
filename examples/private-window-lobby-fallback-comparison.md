@@ -24,6 +24,26 @@ Ask the assistant to propose and implement the fix in one pass. Record its respo
 
 The FDP cycle delivered a missing-key-only Lobby fallback, preserved safe return for approved members, retained visible errors for failed authentication, and recorded focused verification. Its [artifact trail](./private-window-lobby-fallback-artifact-trail.md) provides the plans and commits behind each claim.
 
+## Recorded Baseline Run
+
+On October 9, 2026, a clean Codex CLI session using `gpt-5.6-terra` ran the direct baseline prompt against v3 revision `edcd81e118db24154c05c0dacb4523fb6e460ccc`, immediately before the documented feature-planning commit. It worked in an isolated temporary worktree.
+
+- Changed files: `public/assets/private_site_auth.js`, `src/ForumRewrite/Application.php`, `templates/pages/authentication_resume.php`, `tests/LocalAppSmokeTest.php`, and `tests/PrivateSiteAuthTest.php`.
+- Verification: `php tests/run.php PrivateSiteAuthTest LocalAppSmokeTest` reported **120 run, 117 passed, 3 failed**. The failures were `testAnonymousPublicBoardDoesNotStartViewerSession`, `testPostAndActivityLinkAdjacentSignatureFiles`, and `testSqliteViewerRouteUsesToolsShellAndPublishedSource`.
+- Decision: the baseline added a server-side redirect for a protected request with no identity hint, plus a client-side missing-key redirect to Lobby.
+
+### Score
+
+| Scorecard row | Result | Evidence |
+| --- | --- | --- |
+| Compare viable approaches | Not demonstrated | The baseline response selected an implementation directly and recorded no alternatives. |
+| Preserve saved-key recovery | Failed | The server redirects when no identity hint exists, but a browser-held saved key is not visible to the server. The recorded FDP Step 1 rejected this class of server-side distinction. |
+| Keep authentication failures visible | Passed | The focused run included the existing `testAuthenticationFailureIsVisible`, which passed; the new redirect is limited to the missing-key branch. |
+| Retain Lobby as the access boundary | Passed | The baseline reused the existing Lobby route rather than adding another entry surface. |
+| Stage and verify delivery | Partial | It added tests, but did not create a reviewed decision record or stage-scoped commits; the focused run also finished with three failures. |
+
+This is one run of one model, not a claim about all unguided assistants. It shows a concrete way FDP changed this feature's work: the source cycle made the saved-key recovery boundary explicit before code, while the direct run chose the server-side shortcut that violates it.
+
 ## How to Interpret a Baseline Run
 
 A baseline is comparable only when it starts from the direct prompt above and is evaluated against the scorecard before adding follow-up requirements. Do not claim that FDP prevents mistakes or that an unguided assistant necessarily fails. Report which scorecard rows the baseline covered, what evidence it produced, and any later correction needed to reach the recorded FDP outcome.
