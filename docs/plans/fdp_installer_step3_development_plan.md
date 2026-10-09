@@ -3,7 +3,7 @@
 ## Completion Contract
 
 - Normal entry: a maintainer invokes the documented installer from any directory inside a Git working tree.
-- End-to-end outcome: `install` registers FDP as the `docs/fdp` submodule on `main`; `sync` advances that configured submodule from its `origin` without committing the host repository.
+- End-to-end outcome: `install` registers FDP as the `docs/fdp` submodule on `master`; `sync` advances that configured submodule from its `origin` without committing the host repository.
 - Required recovery: non-Git context, a conflicting path, a missing or incompatible submodule, a dirty submodule, and upstream failure exit with a next action and preserve unrelated host files.
 - Deployment/external verification: validate both commands in disposable Git repositories, including a local upstream fixture that models fetch and pointer advancement; no deployment is applicable.
 - Release condition: command behavior and README guidance are verified, and maintainer review/commit responsibility is explicit.
@@ -19,7 +19,7 @@
 
 - Goal: deliver a safe install command for the FDP submodule.
 - Dependencies: approved Step 2 contract; Git and Bash available to the caller.
-- Expected changes: add the repository-owned Bash command at `scripts/fdp-submodule.sh`; expose `scripts/fdp-submodule.sh install`; locate the current repository, preflight `docs/fdp`, and register `https://github.com/gulkily/fdp.git` on `main` without overwriting conflicts.
+- Expected changes: add the repository-owned Bash command at `scripts/fdp-submodule.sh`; expose `scripts/fdp-submodule.sh install`; locate the current repository, preflight `docs/fdp`, and register `https://github.com/gulkily/fdp.git` on `master` without overwriting conflicts.
 - Verification approach: exercise install from a nested directory in a disposable Git repository; verify `.gitmodules`, the `docs/fdp` submodule registration, and conflict/non-Git failures leave unrelated fixture files unchanged.
 - Risks or open questions:
   - Impact: a bad path check could create or replace consumer content.

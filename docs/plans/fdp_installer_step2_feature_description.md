@@ -13,7 +13,7 @@ FDP currently documents a subtree installation, while consumers who choose a sub
 ## Core Requirements
 
 - Provide a Bash command interface with distinct install and sync operations, run against the caller’s current Git repository.
-- Install FDP as the `docs/fdp` submodule from `https://github.com/gulkily/fdp.git`, tracking the `main` branch.
+- Install FDP as the `docs/fdp` submodule from `https://github.com/gulkily/fdp.git`, tracking its published `master` branch.
 - Refuse install when `docs/fdp` is already occupied by something other than the expected FDP submodule; report the needed recovery action.
 - Synchronize only the existing `docs/fdp` FDP submodule from its configured `origin`, and leave the consuming repository’s pointer change visible for the maintainer to review and commit.
 - Update the public installation guidance to describe the submodule workflow and its initialization requirement for downstream clones.
