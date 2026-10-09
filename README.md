@@ -131,6 +131,13 @@ Returning to planning is a feature, not a failure: a new requirement or unresolv
 Run these before sharing an FDP change. The link check validates local Markdown paths; review rendered Mermaid diagrams on GitHub after publication because GitHub owns the renderer.
 
 ```bash
+# Python 2.7+ or Python 3 (recommended; no third-party packages)
+python scripts/check-markdown-links.py
+
+# Perl (core modules only)
+perl scripts/check-markdown-links.pl
+
+# Node.js remains an optional equivalent
 node scripts/check-markdown-links.mjs
 git diff --check
 git status --short
