@@ -20,6 +20,23 @@ Instruction files under `docs/dev/feature_process/` belong to the FDP repository
 
 Each phase file ends with instructions for when to proceed so you never overrun the context window.
 
+## FDP Debug Mode
+
+Debug mode is optional feedback for **debugging and improving FDP itself**. It defaults to disabled for a new workflow. Users enable or disable it with plain-language requests such as “Enable FDP debug mode for this workflow” or “Disable FDP debug mode.”
+
+**Durable state and recovery**:
+- Record `Debug mode: enabled` or `Debug mode: disabled` immediately below the Plan navigation bar in the current artifact; carry the setting into every subsequent artifact, including Step 4. If no artifact exists yet, record it when creating the first one.
+- On entry to a step, after context loss, and before its completion handoff, read this contract and the current artifact's mode field. If the next artifact does not exist, inherit from the latest completed artifact. Historical artifacts are snapshots, not competing current settings.
+- An explicit latest user enable/disable request takes precedence; update the current field accordingly. Missing state is disabled only for a clearly new workflow with no enable request. For resumed work, ask for clarification if state is missing or conflicting and cannot be resolved from available evidence; do not silently reset it.
+- Mode changes alone do not approve a step or authorize advancing, branching, or committing. During Step 4, record state changes in the summary and include them in the next authorized stage commit; do not amend completed commits.
+
+**Completion report**: When enabled, append one concise diagnostic summary to the completed Step 1–4 handoff, before requesting approval where applicable. Do not report separately for phases or implementation stages. A revision updates the step's findings rather than accumulating duplicate reports. When disabled, omit diagnostic output.
+
+- Always include **Necessary/useful instructions** and **Redundant/unnecessary instructions**. Say “No supported findings” for an empty group.
+- Each finding names its FDP source (file and section or short instruction excerpt), cites observable contribution or overhead in this step, and suggests retention, clarification, consolidation, or removal where justified.
+- Put relevant **Inapplicable instructions** and **Uncertain assessments** in separately labeled groups; never infer redundancy merely from non-use. Report selectively, without claiming exhaustive coverage or access to hidden reasoning.
+- Findings are advisory. Continue following required instructions and approval/commit gates; suggested FDP changes need their own authorized work.
+
 ## Planning Artifacts
 Each step MUST be a separate file in `docs/plans/`:
 - **Step 1**: `{feature_name}_step1_solution_assessment.md`

@@ -3,6 +3,8 @@
 _Read this file only if the feature is complex enough to require Step 1. Pause again after finishing until the user replies with “Approved Step 1.”_
 
 ## Objective
+On entry or resumption, restore and record mode state using [FDP Debug Mode](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode).
+
 Resolve uncertainty when there are multiple viable approaches, complex trade-offs, or an unclear direction before investing in further planning.
 
 ## Deliverable
@@ -22,4 +24,6 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 - Favor bullets over paragraphs for fast comparisons
 
 ## Next
+Before the completed-step handoff, check mode state and, if enabled, append the [FDP debug summary](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode).
+
 Share the document for review and stop. Do not create Step 2 until the user explicitly responds with “Approved Step 1.” When approval arrives, continue with `docs/dev/feature_process/step2_feature_description.md`.

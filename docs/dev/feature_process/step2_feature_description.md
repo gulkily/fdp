@@ -3,6 +3,8 @@
 _Open this only after receiving “Approved Step 1” (or if Step 1 was skipped). Pause again after delivering Step 2 until the user sends “Approved Step 2.”_
 
 ## Objective
+On entry or resumption, restore and record mode state using [FDP Debug Mode](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode).
+
 Capture the problem framing, desired outcomes, and shared-component considerations before planning implementation work.
 
 ## Deliverable
@@ -31,4 +33,6 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Keep the doc lightweight enough to consume at a glance
 
 ## Next
+Before the completed-step handoff, check mode state and, if enabled, append the [FDP debug summary](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode).
+
 Deliver the document, request confirmation, and wait for "Approved Step 2." Once approved, continue with `docs/dev/feature_process/step3_development_plan_before.md`.
