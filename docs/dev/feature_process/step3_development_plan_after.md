@@ -10,6 +10,7 @@ Finalize Step 3 for review, enforce approval gating, and hand off cleanly to Ste
 2. Verify stage sizing is still atomic (about <=1 hour per stage) and split oversized stages before review.
 3. Verify the plan completes the Contract through normal UI/CLI, including recovery and deployment boundaries. For approved documentation-only work, verify it instead completes the stated document outcome within the allowed file scope and identifies evidence and applicable verification; otherwise rescope in Step 2 or call it internal maintenance.
 4. Deliver the Step 3 artifact for user review and explicitly request `Approved Step 3`.
+   Before requesting approval, check mode state and, if enabled, append the completed-step [FDP debug summary](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode).
 5. Stop and wait. Do not begin Step 4 until `Approved Step 3` is received.
 6. Keep Step 1-3 planning docs uncommitted here; Step 4 handles the planning-doc commit as the first commit on the feature branch.
 

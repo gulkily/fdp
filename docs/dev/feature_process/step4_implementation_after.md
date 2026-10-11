@@ -16,4 +16,6 @@ Run final Step 4 verification gates and prepare handoff.
 6. Confirm documentation is updated, including the finalized Step 4 implementation summary.
 
 ## Next
+Before the completed-step handoff, check mode state and, if enabled, append the [FDP debug summary](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode). Report once for Step 4, not per stage.
+
 Notify the user for review/handoff. If additional scope emerges, return to the appropriate earlier step instead of improvising within Step 4.

@@ -6,6 +6,7 @@ _Open only after the user responds "Approved Step 2."_
 Confirm the planning boundary and artifact setup before drafting Step 3.
 
 ## Before Checklist
+- On entry or resumption, restore and record mode state using [FDP Debug Mode](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode); carry it into the Step 3 artifact.
 - Confirm Step 2 is approved and no new scope was added after approval.
 - Prepare the Step 3 artifact path: `docs/plans/{feature_name}_step3_development_plan.md`.
 - Keep Step 1-3 planning docs uncommitted while drafting/revising Step 3.

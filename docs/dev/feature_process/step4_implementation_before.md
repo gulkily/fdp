@@ -6,6 +6,8 @@ _Open only after the user responds "Approved Step 3."_
 Set up the Step 4 branch and lock in planning artifacts before implementation starts. For documentation-only work, confirm that the approved Step 2/3 artifacts name the allowed documentation file scope.
 
 ## Planning Docs Commit Gate (Required)
+On entry or resumption, restore mode state using [FDP Debug Mode](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode). Inherit it from Step 3 when creating the Step 4 summary after the planning commit; do not alter approved planning documents for this setup.
+
 After `Approved Step 3` and before any implementation changes:
 1. Create the Step 4 feature branch.
 2. Run `git status --short` and confirm Step 1-3 planning docs are present and unstaged/unchanged as expected.

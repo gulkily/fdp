@@ -3,6 +3,8 @@
 _Open only after completing Step 3 Before._
 
 ## Objective
+On resumption, check the current artifact's state against [FDP Debug Mode](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode). This phase does not trigger a diagnostic report.
+
 Break the feature into atomic implementation stages, identify dependencies, and define verification expectations before coding starts.
 
 ## Deliverable

@@ -6,6 +6,7 @@ _Open only after completing Step 4 Before._
 Execute the plan in atomic stages on a dedicated feature branch, documenting progress and verification as you go.
 
 ## Execution Rules
+- On resumption and before continuing a stage, restore mode state using [FDP Debug Mode](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode). Record inherited state below the Step 4 summary's navigation bar; phases and stage boundaries do not trigger diagnostic reports.
 - Work stages sequentially, keeping each stage <2 hours
 - Favor the simplest viable implementation first; iterate only when necessary
 - Before adding new presentation markup or API payloads, confirm whether a canonical component/contract already exists per the Step 2 inventory and reuse/extend instead of duplicating
