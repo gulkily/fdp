@@ -108,6 +108,36 @@ See [FDP Examples](./examples/) for three completed v3 feature cycles: a concise
 
 The strict per-step files mean you always paste a small, targeted instruction block into the chat; no more scrolling through a 4k-token mega-brief.
 
+## Optional FDP debug mode
+
+Use debug mode to collect evidence for **improving FDP itself**. It is disabled by default. Enable it in your initial feature prompt:
+
+> Enable FDP debug mode. I want to add CSV export; please write Step 1 of FEATURE_DEVELOPMENT_PROCESS.md.
+
+Or enable it during an existing workflow:
+
+> Enable FDP debug mode for this workflow.
+
+Turn it off with:
+
+> Disable FDP debug mode.
+
+The assistant records `Debug mode: enabled` or `Debug mode: disabled` below the current planning artifact's navigation bar and carries the setting into subsequent artifacts, including the Step 4 summary. On resumption after context loss, it reads that durable state rather than relying on chat reminders. A latest explicit mode request updates the current setting; historical artifact fields remain snapshots. Missing or conflicting state in resumed work requires clarification if available evidence cannot resolve it.
+
+When enabled, each completed step's handoff includes one concise diagnostic summary before its approval request where applicable. Phases and implementation stages do not produce separate summaries; revisions update findings rather than accumulate duplicate reports. Disabled mode adds no diagnostic output.
+
+Illustrative Step 1 output (use actual evidence from the completed step):
+
+> **Necessary/useful instructions**
+> - `step1_solution_assessment.md`, Structure: preserving the original query retained the requested debug-summary categories while clarifying the maintenance purpose separately. Retain this instruction.
+>
+> **Redundant/unnecessary instructions**
+> - No supported findings.
+
+Relevant **Inapplicable instructions** and **Uncertain assessments** appear separately when needed. An instruction not used in this step is not automatically unnecessary. Each finding identifies an FDP source and observable contribution or overhead; report selectively rather than inventory every instruction.
+
+Use findings to propose retaining, clarifying, consolidating, or removing FDP instructions. Diagnostics do not waive required instructions or approval/commit gates, and suggestions do not authorize automatic edits. See the canonical [FDP Debug Mode contract](./FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode).
+
 ## Workflow at a glance
 
 **Approval chain: each planning step needs explicit approval before the next begins.**
