@@ -11,7 +11,7 @@ On entry or resumption, restore mode state using [FDP Debug Mode](../../../FEATU
 After `Approved Step 3` and before any implementation changes:
 1. Create the Step 4 feature branch.
 2. Run `git status --short` and confirm Step 1-3 planning docs are present and unstaged/unchanged as expected.
-3. Commit only the approved Step 1-3 planning documents as the first commit on the branch.
+3. Organize and commit the approved Step 1-3 planning documents under the [organization allowance](../../../FEATURE_DEVELOPMENT_PROCESS.md#planning-artifacts), including any feature debug log, as the first commit on the branch.
 4. Run `git log --oneline --max-count 1` and confirm that planning-doc commit is at `HEAD`.
 5. Only then begin Stage 1 implementation.
 

@@ -30,12 +30,16 @@ Debug mode is optional feedback for **debugging and improving FDP itself**. It d
 - An explicit latest user enable/disable request takes precedence; update the current field accordingly. Missing state is disabled only for a clearly new workflow with no enable request. For resumed work, ask for clarification if state is missing or conflicting and cannot be resolved from available evidence; do not silently reset it.
 - Mode changes alone do not approve a step or authorize advancing, branching, or committing. During Step 4, record state changes in the summary and include them in the next authorized stage commit; do not amend completed commits.
 
-**Completion report**: When enabled, append one concise diagnostic summary to the completed Step 1–4 handoff, before requesting approval where applicable. Do not report separately for phases or implementation stages. A revision updates the step's findings rather than accumulating duplicate reports. When disabled, omit diagnostic output.
+**Completion report**: When enabled, include one concise diagnostic summary and a debug-log link in each completed Step 1–4 handoff, before requesting approval where applicable. Do not report separately for phases or implementation stages. Revisions update the handoff's findings. When disabled, emit no diagnostics and preserve the log.
 
 - Always include **Necessary/useful instructions** and **Redundant/unnecessary instructions**. Say “No supported findings” for an empty group.
 - Each finding names its FDP source (file and section or short instruction excerpt), cites observable contribution or overhead in this step, and suggests retention, clarification, consolidation, or removal where justified.
 - Put relevant **Inapplicable instructions** and **Uncertain assessments** in separately labeled groups; never infer redundancy merely from non-use. Report selectively, without claiming exhaustive coverage or access to hidden reasoning.
 - Findings are advisory. Continue following required instructions and approval/commit gates; suggested FDP changes need their own authorized work.
+
+**Debug log**: Before presenting any FDP debug output, append its full text to `{feature_name}_debug_log.md` beside the planning artifacts, matching their feature prefix. Create it on first output; reuse it across steps, resumptions, and mode changes. Move it with the plans into `docs/plans/{feature_name}/` and update links. Each entry needs a UTC timestamp and step identifier. Never overwrite entries: append corrections labeled `Revision`, identifying the superseded entry; skip unchanged reports. Report write failures rather than claiming output was saved.
+
+Keep the log uncommitted during Steps 1–3; include it in the initial planning commit. During Step 4, include additions in the next authorized stage commit, or a separate log-only handoff commit after the final stage. Do not amend completed commits.
 
 ## Planning Artifacts
 Each step MUST be a separate file in `docs/plans/`:
@@ -46,9 +50,9 @@ Each step MUST be a separate file in `docs/plans/`:
 
 **Directory structure and organization rule**: After explicit `Approved Step 3` and creation of the Step 4 feature branch, organize the current feature's planning artifacts in `docs/plans/{feature_name}/` before the first commit or implementation, regardless of artifact count or whether Step 1 was skipped. Reuse an existing feature folder. Preserve filenames and separate step files; update relative Feature plan navigation links, affected repository references, and the `docs/plans/README.md` entry as needed.
 
-The initial planning commit contains only approved Step 1–3 documents (Steps 2–3 if Step 1 was skipped), plus the moves, index entries, and reference fixes needed for this feature's organization. Exclude implementation changes, the Step 4 summary, unrelated plans, and unapproved auxiliary content. Organization permits no substantive revisions to approved planning content or changes to its debug-mode state. Create the Step 4 summary later, after the planning commit, in the same folder, inheriting debug mode from Step 3 under the [FDP Debug Mode](#fdp-debug-mode) recovery rules.
+The initial planning commit contains only approved Step 1–3 documents (Steps 2–3 if Step 1 was skipped), this feature's existing debug log if present, and the moves, index entries, and reference fixes needed for this feature's organization. Exclude implementation changes, the Step 4 summary, unrelated plans, and other unapproved auxiliary content. Organization permits no substantive revisions to approved planning content or changes to its debug-mode state. Create the Step 4 summary later, after the planning commit, in the same folder, inheriting debug mode from Step 3 under the [FDP Debug Mode](#fdp-debug-mode) recovery rules.
 
-This narrow organization allowance qualifies the [detailed Step 4 planning-commit gate](docs/dev/feature_process/step4_implementation_before.md#planning-docs-commit-gate-required), including its “only approved documents” requirement and restriction on altering approved planning documents during setup.
+This narrow organization allowance also applies to the [detailed Step 4 planning-commit gate](docs/dev/feature_process/step4_implementation_before.md#planning-docs-commit-gate-required); its restriction on altering approved planning documents during setup remains in effect.
 
 **Plan navigation**: Start every artifact with this relative-link bar; omit Step 1 only when skipped.
 

@@ -24,6 +24,6 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 - Favor bullets over paragraphs for fast comparisons
 
 ## Next
-Before the completed-step handoff, check mode state and, if enabled, append the [FDP debug summary](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode).
+Before the completed-step handoff, check mode state and, if enabled, log and present the [FDP debug summary](../../../FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode), linking to the log.
 
 Share the document for review and stop. Do not create Step 2 until the user explicitly responds with “Approved Step 1.” When approval arrives, continue with `docs/dev/feature_process/step2_feature_description.md`.

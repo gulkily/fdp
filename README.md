@@ -103,7 +103,7 @@ See [FDP Examples](./examples/) for three completed v3 feature cycles: a concise
 2. Let the assistant draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.
 3. When the doc hits the bar, reply verbatim with `Approved Step N, please continue to Step N+1.` The bot must stop until that phrase arrives, so you control scope creep.
 4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
-5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.
+5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with the approved Step 1-3 docs and [organization allowance](./FEATURE_DEVELOPMENT_PROCESS.md#planning-artifacts).
 6. During Step 4, make at least one stage-scoped commit per completed stage, and include that stage's Step 4 summary update in the same commit.
 
 The strict per-step files mean you always paste a small, targeted instruction block into the chat; no more scrolling through a 4k-token mega-brief.
@@ -124,10 +124,12 @@ Turn it off with:
 
 The assistant records `Debug mode: enabled` or `Debug mode: disabled` below the current planning artifact's navigation bar and carries the setting into subsequent artifacts, including the Step 4 summary. On resumption after context loss, it reads that durable state rather than relying on chat reminders. A latest explicit mode request updates the current setting; historical artifact fields remain snapshots. Missing or conflicting state in resumed work requires clarification if available evidence cannot resolve it.
 
-When enabled, each completed step's handoff includes one concise diagnostic summary before its approval request where applicable. Phases and implementation stages do not produce separate summaries; revisions update findings rather than accumulate duplicate reports. Disabled mode adds no diagnostic output.
+When enabled, each completed step's handoff includes a diagnostic summary and a link to `{feature_name}_debug_log.md` beside its planning documents. All debug output is appended there with a UTC timestamp and step identifier; corrections append labeled revisions. The log follows the plans when organized. Phases and stages do not trigger reports; disabled mode preserves the log without adding output. See the [debug contract](./FEATURE_DEVELOPMENT_PROCESS.md#fdp-debug-mode) for recovery and commit rules.
 
-Illustrative Step 1 output (use actual evidence from the completed step):
+Example entry in `csv_export_debug_log.md` (use actual timestamps and step evidence):
 
+> ## 2026-10-12T14:30:00Z — Step 1
+>
 > **Necessary/useful instructions**
 > - `step1_solution_assessment.md`, Structure: preserving the original query retained the requested debug-summary categories while clarifying the maintenance purpose separately. Retain this instruction.
 >
